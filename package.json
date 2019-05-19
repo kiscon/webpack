@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --config webpack.prod.config.js",
-    "dev-build": "webpack --config webpack.config.js"
+    "prod-build": "webpack --config webpack.prod.config.js",
+    "build": "webpack",
+    "watch": "webpack --watch"
   },
   "author": "",
   "license": "ISC",
