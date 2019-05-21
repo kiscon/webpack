@@ -1,5 +1,5 @@
 const path = require('path')
-
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
 	entry: './src/index.js',
 	output: {
@@ -14,6 +14,12 @@ module.exports = {
 		hot: true,
 		port: 3000,
 		compress: true, //开启压缩
-		contentBase: './src'
-	}
+		// contentBase: './src'
+	},
+	plugins: [
+		new HtmlWebpackPlugin({
+			filename: 'index.html',
+			template: './src/index.html'
+		})
+	]
 }
