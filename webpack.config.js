@@ -12,7 +12,7 @@ module.exports = {
 	devServer: {
 		open: true, // 自动开启
 		hot: true,
-		port: 3000,
+		port: 5000,
 		compress: true, //开启压缩
 		// contentBase: './src'
 	},
