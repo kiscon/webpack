@@ -7,3 +7,17 @@ npx webpack
 
 ### webpack-dev-middleware
 注：如果使用middleware，必须使用html-webpack-plugin插件，否则html文件无法正确输出到express服务器的根目录
+
+### 样式文件处理
+- style-loader
+- css-loader
+- less-loader
+- less
+- sass-loader
+- node-sass
+
+webpack读取loader时是从右到左的读取，会将css文件先交给最右侧的loader来处理
+loader的执行顺序是管道的方式链式调用
+
+css-loader：解析css文件
+style-loader：将解析出来的结果，放到html中，使其生效
