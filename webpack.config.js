@@ -1,7 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
-	entry: './src/index.js',
+	entry: './src/main.js',
 	output: {
 		// path.resolve：解析当前相对路径的绝对路径
 		path: path.resolve(__dirname, 'dist'),
@@ -21,5 +21,25 @@ module.exports = {
 			filename: 'index.html',
 			template: './src/index.html'
 		})
-	]
+	],
+	module: {
+		rules: [
+			// webpack读取loader时是从右到左的读取，会将css文件先交给最右侧的loader来处理
+			// loader的执行顺序是管道的方式链式调用
+			{
+				test: /\.css$/,
+				use: ['style-loader', 'css-loader']
+				// css-loader：解析css文件
+				// style-loader：将解析出来的结果，放到html中，使其生效
+			},
+			{
+				test: /\.less$/,
+				use: ['style-loader', 'css-loader', 'less-loader']
+			},
+			{
+				test: /\.s(a|c)ss$/,
+				use: ['style-loader', 'css-loader', 'sass-loader']
+			}
+		]
+	}
 }
