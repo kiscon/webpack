@@ -39,6 +39,19 @@ module.exports = {
 			{
 				test: /\.s(a|c)ss$/,
 				use: ['style-loader', 'css-loader', 'sass-loader']
+			},
+			{
+				test: /\.(jpg|jpeg|png|bmp|gif)$/,
+				use: {
+					loader: 'url-loader',
+					options: {
+						limit: 5 * 1024 // 5kb
+					}
+				}
+			},
+			{
+				test: /\.(woff|woff2|eot|svg|ttf)$/,
+				use: 'url-loader'
 			}
 		]
 	}

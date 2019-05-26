@@ -21,3 +21,7 @@ loader的执行顺序是管道的方式链式调用
 
 css-loader：解析css文件
 style-loader：将解析出来的结果，放到html中，使其生效
+
+### 处理图片和字体
+
+url-loader封装了file-loader，所以使用url-loader时需要安装file-loader
