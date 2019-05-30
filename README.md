@@ -25,3 +25,11 @@ style-loader：将解析出来的结果，放到html中，使其生效
 ### 处理图片和字体
 
 url-loader封装了file-loader，所以使用url-loader时需要安装file-loader
+
+### js文件转换
+@babel/preset-env
+@babel/plugin-proposal-class-properties
+
+处理generator  
+@babel/plugin-transform-runtime
+@babel/runtime
