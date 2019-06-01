@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prod-build": "webpack --config webpack.prod.config.js",
     "dev2": "webpack-dev-server --compress --hot --open --port 3000 --contentBase src",
-    "dev": "webpack-dev-server",
-    "build": "webpack",
+    "dev": "webpack-dev-server --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js",
+    "build-custom": "webpack --config webpack.custom.config.js",
     "watch": "webpack --watch",
     "server": "node server.js"
   },
