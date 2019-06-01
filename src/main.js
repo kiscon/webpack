@@ -9,3 +9,9 @@ class Person {
 }
 let p = new Person()
 
+if (!IS_DEV) {
+	console.log('生产环境')
+} else {
+	console.log('开发环境')
+}
+
