@@ -34,5 +34,10 @@ url-loader封装了file-loader，所以使用url-loader时需要安装file-loade
 @babel/plugin-transform-runtime
 @babel/runtime
 
+### BannerPlugin
+webpack的内置插件，用于给打包的js文件加上版权注释信息
+
+
+
 ### 参考配置
 https://www.jianshu.com/p/84e0a31024c5
