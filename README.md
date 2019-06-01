@@ -33,3 +33,6 @@ url-loader封装了file-loader，所以使用url-loader时需要安装file-loade
 处理generator  
 @babel/plugin-transform-runtime
 @babel/runtime
+
+### 参考配置
+https://www.jianshu.com/p/84e0a31024c5

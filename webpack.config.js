@@ -1,5 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+
 module.exports = {
 	entry: './src/main.js',
 	output: {
@@ -19,8 +21,14 @@ module.exports = {
 	plugins: [
 		new HtmlWebpackPlugin({
 			filename: 'index.html',
-			template: './src/index.html'
-		})
+			template: './src/index.html',
+			// 压缩 去掉所有空格
+			minify: {
+				collapseWhitespace: true //false | true
+			},
+			hash: true
+		}),
+		new CleanWebpackPlugin()
 	],
 	module: {
 		rules: [
@@ -64,5 +72,6 @@ module.exports = {
 			},
 
 		]
-	}
+	},
+	devtool: 'inline-source-map'
 }
