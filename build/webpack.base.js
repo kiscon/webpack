@@ -11,7 +11,7 @@ module.exports = {
 	},
 	output: {
 		// path.resolve：解析当前相对路径的绝对路径
-		path: path.resolve(__dirname, 'dist'),
+		path: path.resolve(__dirname, '..', 'dist'),
 		filename: '[name].js'
 	},
 	plugins: [
@@ -33,7 +33,7 @@ module.exports = {
 		new CleanWebpackPlugin(),
 		new CopyWebpackPlugin([
 			{
-				from: path.join(__dirname, 'assets'),
+				from: path.join(__dirname, '..', 'assets'),
 				to: 'assets'
 			}
 		]),
@@ -98,7 +98,5 @@ module.exports = {
 			// 	}
 			// }
 		]
-	},
-	// devtool: 'inline-source-map'
-	// devtool: 'cheap-module-eval-source-map'
+	}
 }
