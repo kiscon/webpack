@@ -2304,6 +2304,11 @@ expand-tilde@^2.0.0, expand-tilde@^2.0.2:
   dependencies:
     homedir-polyfill "^1.0.1"
 
+expose-loader@^0.7.5:
+  version "0.7.5"
+  resolved "https://registry.yarnpkg.com/expose-loader/-/expose-loader-0.7.5.tgz#e29ea2d9aeeed3254a3faa1b35f502db9f9c3f6f"
+  integrity sha512-iPowgKUZkTPX5PznYsmifVj9Bob0w2wTHVkt/eYNPSzyebkUgIedmskf/kcfEIWpiWjg3JRjnW+a17XypySMuw==
+
 express@^4.17.0:
   version "4.17.0"
   resolved "https://registry.yarnpkg.com/express/-/express-4.17.0.tgz#288af62228a73f4c8ea2990ba3b791bb87cd4438"
@@ -3341,6 +3346,11 @@ isstream@~0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
   integrity sha1-R+Y/evVa+m+S4VAOaQ64uFKcCZo=
+
+jquery@^3.4.1:
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.4.1.tgz#714f1f8d9dde4bdfa55764ba37ef214630d80ef2"
+  integrity sha512-36+AdBzCL+y6qjw5Tx7HgzeGCzC81MDDgaUP8ld2zhx58HdqXGoBd+tHdrBMiyjGQs0Hxs/MLZTu/eHNJJuWPw==
 
 js-base64@^2.1.8:
   version "2.5.1"

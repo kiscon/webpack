@@ -46,7 +46,12 @@ module.exports = {
 				to: 'assets'
 			}
 		]),
-		new webpack.BannerPlugin('webpaxk入门到进阶')
+		new webpack.BannerPlugin('webpaxk入门到进阶'),
+		// 将库自动加载到每个模块
+		new webpack.ProvidePlugin({
+			$: 'jquery',
+			jQuery: 'jquery'
+		})
 	],
 	module: {
 		rules: [
@@ -93,6 +98,14 @@ module.exports = {
 				test: /\.(htm|html)$/i,
 				use: 'html-withimg-loader'
 			},
+			// 将库引入到全局作用域
+			// {
+			// 	test: require.resolve('jquery'),
+			// 	use: {
+			// 		loader: 'expose-loader',
+			// 		options: '$'
+			// 	}
+			// }
 		]
 	},
 	devtool: 'inline-source-map'

@@ -37,6 +37,10 @@ url-loader封装了file-loader，所以使用url-loader时需要安装file-loade
 ### BannerPlugin
 webpack的内置插件，用于给打包的js文件加上版权注释信息
 
+### 第三方库的引入
+expose-loader，将库引入到全局作用域
+webpack.ProvidePlugin，将库自动加载到每个模块
+
 
 
 ### 参考配置
