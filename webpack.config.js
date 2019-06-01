@@ -5,11 +5,14 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
-	entry: './src/main.js',
+	entry: {
+		main: './src/main.js',
+		other: './src/pages/other/other.js'
+	},
 	output: {
 		// path.resolve：解析当前相对路径的绝对路径
 		path: path.resolve(__dirname, 'dist'),
-		filename: 'bundle.js'
+		filename: '[name].js'
 	},
 	mode: 'development', // 开发模式配置，默认production
 	watch: true, // 开启监视模式，此时webpack指令进行打包会监视文件变化自动打包
@@ -24,11 +27,17 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			filename: 'index.html',
 			template: './src/index.html',
+			chunks: ['main'],
 			// 压缩 去掉所有空格
 			minify: {
 				collapseWhitespace: true //false | true
 			},
 			hash: true
+		}),
+		new HtmlWebpackPlugin({
+			filename: 'other.html',
+			template: './src/pages/other/other.html',
+			chunks: ['other']
 		}),
 		new CleanWebpackPlugin(),
 		new CopyWebpackPlugin([
@@ -79,7 +88,11 @@ module.exports = {
 				},
 				exclude: '/node_modules/'
 			},
-
+			// html中img标签的图片资源处理
+			{
+				test: /\.(htm|html)$/i,
+				use: 'html-withimg-loader'
+			},
 		]
 	},
 	devtool: 'inline-source-map'
