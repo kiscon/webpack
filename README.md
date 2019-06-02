@@ -41,7 +41,9 @@ webpack的内置插件，用于给打包的js文件加上版权注释信息
 expose-loader，将库引入到全局作用域
 webpack.ProvidePlugin，将库自动加载到每个模块
 
-
+### HMR使用
+需要对某个模块进行热更新时，可以通过module.hot.accept方法进行文件监视
+https://segmentfault.com/a/1190000003872635
 
 ### 参考配置
 https://www.jianshu.com/p/84e0a31024c5

@@ -3,6 +3,7 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+let outputDir = process.env.outputDir || 'dist'
 
 module.exports = {
 	entry: {
@@ -11,7 +12,7 @@ module.exports = {
 	},
 	output: {
 		// path.resolve：解析当前相对路径的绝对路径
-		path: path.resolve(__dirname, '..', 'dist'),
+		path: path.resolve(__dirname, '..', outputDir),
 		filename: '[name].js'
 	},
 	plugins: [
