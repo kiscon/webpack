@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+
 let outputDir = process.env.outputDir || 'dist'
 
 module.exports = {
@@ -56,19 +57,19 @@ module.exports = {
 			{
 				test: /\.css$/,
 				// use: ['style-loader', 'css-loader']
-				use: [MiniCssExtractPlugin.loader, 'css-loader']
+				use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader']
 				// css-loader：解析css文件
 				// style-loader：将解析出来的结果，放到html中，使其生效
 			},
 			{
 				test: /\.less$/,
 				// use: ['style-loader', 'css-loader', 'less-loader']
-				use: [MiniCssExtractPlugin.loader, 'css-loader', 'less-loader']
+				use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'less-loader']
 			},
 			{
 				test: /\.s(a|c)ss$/,
 				// use: ['style-loader', 'css-loader', 'sass-loader']
-				use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+				use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader']
 			},
 			{
 				test: /\.(jpg|jpeg|png|bmp|gif)$/,
