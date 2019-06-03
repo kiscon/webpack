@@ -3,6 +3,7 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 let outputDir = process.env.outputDir || 'dist'
 
 module.exports = {
@@ -43,6 +44,9 @@ module.exports = {
 		new webpack.ProvidePlugin({
 			$: 'jquery',
 			jQuery: 'jquery'
+		}),
+		new MiniCssExtractPlugin({
+			filename: '[name].css'
 		})
 	],
 	module: {
@@ -51,17 +55,20 @@ module.exports = {
 			// loader的执行顺序是管道的方式链式调用
 			{
 				test: /\.css$/,
-				use: ['style-loader', 'css-loader']
+				// use: ['style-loader', 'css-loader']
+				use: [MiniCssExtractPlugin.loader, 'css-loader']
 				// css-loader：解析css文件
 				// style-loader：将解析出来的结果，放到html中，使其生效
 			},
 			{
 				test: /\.less$/,
-				use: ['style-loader', 'css-loader', 'less-loader']
+				// use: ['style-loader', 'css-loader', 'less-loader']
+				use: [MiniCssExtractPlugin.loader, 'css-loader', 'less-loader']
 			},
 			{
 				test: /\.s(a|c)ss$/,
-				use: ['style-loader', 'css-loader', 'sass-loader']
+				// use: ['style-loader', 'css-loader', 'sass-loader']
+				use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
 			},
 			{
 				test: /\.(jpg|jpeg|png|bmp|gif)$/,

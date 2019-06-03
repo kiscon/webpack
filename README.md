@@ -45,5 +45,10 @@ webpack.ProvidePlugin，将库自动加载到每个模块
 需要对某个模块进行热更新时，可以通过module.hot.accept方法进行文件监视
 https://segmentfault.com/a/1190000003872635
 
+### 将css提取到独立文件中
+mini-css-extract-plugin是用于将css提取为独立的文件的插件，对每个包含css文件，
+支持按需加载css和sourceMap，只能在webpack4中，有如下优势：异步加载、不重复编译，性能好、
+更容易使用、只针对css。
+
 ### 参考配置
 https://www.jianshu.com/p/84e0a31024c5
