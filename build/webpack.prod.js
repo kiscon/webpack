@@ -15,6 +15,9 @@ module.exports = merge(baseConfig, {
 		})
 	],
 	optimization: {
-		minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})]
+		minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})], // 代码压缩
+		splitChunks: { // 抽取公用代码
+			chunks: 'all'
+		}
 	}
 })

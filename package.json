@@ -9,7 +9,7 @@
     "dev": "webpack-dev-server --config ./build/webpack.dev.js",
     "build": "webpack --config ./build/webpack.prod.js",
     "build:dev": "webpack --config ./build/webpack.dev.js",
-    "build-custom": "webpack --config webpack.custom.config.js",
+    "build:custom": "webpack --config webpack.custom.config.js",
     "watch": "webpack --watch",
     "server": "node server.js",
     "start": "live-server ./dist"
@@ -23,6 +23,7 @@
   "devDependencies": {
     "@babel/core": "^7.4.5",
     "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/plugin-transform-runtime": "^7.4.4",
     "@babel/preset-env": "^7.4.5",
     "@babel/runtime": "^7.4.5",

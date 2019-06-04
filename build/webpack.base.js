@@ -108,9 +108,9 @@ module.exports = {
 			// }
 		]
 	},
-	optimization: { // 抽取公用代码
-		splitChunks: {
-			chunks: 'all'
-		}
-	}
+	// optimization: { // 抽取公用代码
+	// 	splitChunks: {
+	// 		chunks: 'all'
+	// 	}
+	// }
 }
