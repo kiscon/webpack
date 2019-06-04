@@ -8,6 +8,7 @@
     "dev2": "webpack-dev-server --compress --hot --open --port 3000 --contentBase src",
     "dev": "webpack-dev-server --config ./build/webpack.dev.js",
     "build": "webpack --config ./build/webpack.prod.js",
+    "build:dev": "webpack --config ./build/webpack.dev.js",
     "build-custom": "webpack --config webpack.custom.config.js",
     "watch": "webpack --watch",
     "server": "node server.js",

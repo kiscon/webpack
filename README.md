@@ -54,6 +54,12 @@ mini-css-extract-plugin是用于将css提取为独立的文件的插件，对每
 optimize-css-assets-webpack-plugin插件来完成css压缩，但由于配置css压缩时会覆盖掉webpack默认
 的优化配置，导致js代码无法压缩，所以还需手动把js代码压缩插件导入进来：terser-webpack-plugin
 
+### 抽取公用代码
+optimization: {
+  splitChunks: {
+    chunks: 'all'
+  }
+}
 
 ### 参考配置
 https://www.jianshu.com/p/84e0a31024c5
