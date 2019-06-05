@@ -55,11 +55,21 @@ optimize-css-assets-webpack-plugin插件来完成css压缩，但由于配置css�
 的优化配置，导致js代码无法压缩，所以还需手动把js代码压缩插件导入进来：terser-webpack-plugin
 
 ### 抽取公用代码
+```
 optimization: {
   splitChunks: {
     chunks: 'all'
   }
 }
+```
+
+### 动态导入(懒加载)
+```javascript
+import('jquery').then(({default: $}) => {
+	console.log($('body'))
+})
+```
+动态导入最大的好处是实现了懒加载，可以提高SPA应用程序的首屏加载速度。
 
 ### 参考配置
 https://www.jianshu.com/p/84e0a31024c5
