@@ -48,10 +48,12 @@ module.exports = {
 		}),
 		new MiniCssExtractPlugin({
 			filename: '[name].css'
-		})
+		}),
+		// 不打包moment的语言包
+		new webpack.IgnorePlugin(/\.\/locale/, /moment/),
 	],
 	module: {
-		noParse: /jquery/,
+		noParse: /jquery|moment/,
 		rules: [
 			// webpack读取loader时是从右到左的读取，会将css文件先交给最右侧的loader来处理
 			// loader的执行顺序是管道的方式链式调用

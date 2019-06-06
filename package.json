@@ -3,6 +3,8 @@
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
+  "author": "kiscon",
+  "license": "ISC",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev2": "webpack-dev-server --compress --hot --open --port 3000 --contentBase src",
@@ -14,11 +16,10 @@
     "server": "node server.js",
     "start": "live-server ./dist"
   },
-  "author": "kiscon",
-  "license": "ISC",
   "dependencies": {
     "@babel/polyfill": "^7.4.4",
-    "jquery": "^3.4.1"
+    "jquery": "^3.4.1",
+    "moment": "^2.24.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",

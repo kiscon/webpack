@@ -71,5 +71,11 @@ import('jquery').then(({default: $}) => {
 ```
 动态导入最大的好处是实现了懒加载，可以提高SPA应用程序的首屏加载速度。
 
+### lgnorePlugin插件
+使用lgnorePlugin插件来忽略掉moment模块的locale目录
+```javascript
+new webpack.IgnorePlugin(/\.\/locale/, /moment/)
+```
+
 ### 参考配置
 https://www.jianshu.com/p/84e0a31024c5
