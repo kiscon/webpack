@@ -51,6 +51,7 @@ module.exports = {
 		})
 	],
 	module: {
+		noParse: /jquery/,
 		rules: [
 			// webpack读取loader时是从右到左的读取，会将css文件先交给最右侧的loader来处理
 			// loader的执行顺序是管道的方式链式调用
@@ -91,7 +92,8 @@ module.exports = {
 				use: {
 					loader: 'babel-loader'
 				},
-				exclude: '/node_modules/'
+				exclude: '/node_modules/',
+				include: path.resolve(__dirname, '../src')
 			},
 			// html中img标签的图片资源处理
 			{
@@ -107,10 +109,5 @@ module.exports = {
 			// 	}
 			// }
 		]
-	},
-	// optimization: { // 抽取公用代码
-	// 	splitChunks: {
-	// 		chunks: 'all'
-	// 	}
-	// }
+	}
 }
