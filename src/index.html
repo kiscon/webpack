@@ -5,6 +5,11 @@
   <title>Webpack</title>
 </head>
 <body>
-  <div id="app"></div>
+  <div id="app">
+    <div v-text="msg"></div>
+    <router-link to="/home">首页</router-link>
+    <router-link to="/404">404</router-link>
+    <router-view />
+  </div>
 </body>
 </html>

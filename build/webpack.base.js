@@ -1,9 +1,10 @@
 const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+// const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
 const multipageConfig = require('./multipage-config')
 
 let outputDir = process.env.outputDir || 'dist'
@@ -30,7 +31,7 @@ module.exports = {
 			hash: true
 		}),
 		...multipageConfig.moreHtml,
-		new CleanWebpackPlugin(),
+		// new CleanWebpackPlugin(),
 		new CopyWebpackPlugin([
 			{
 				from: path.join(__dirname, '..', 'assets'),
@@ -48,6 +49,12 @@ module.exports = {
 		}),
 		// 不打包moment的语言包
 		new webpack.IgnorePlugin(/\.\/locale/, /moment/),
+		new webpack.DllReferencePlugin({
+			manifest: path.resolve(__dirname, '../dist/manifest.json')
+		}),
+		new AddAssetHtmlPlugin({
+			filepath: path.resolve(__dirname, '../dist/vue_dll.js')
+		})
 	],
 	module: {
 		noParse: /jquery/,

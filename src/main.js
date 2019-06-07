@@ -1,12 +1,50 @@
-// import '../css/base.css'
-// import '../less/base.less'
-// import '../scss/base.scss'
-import '@babel/polyfill'
-import moment from 'moment'
-// 手动引入语言包
-import 'moment/locale/zh-cn'
-// 设置语言
-moment.locale('zh-CN')
+// import './css/base.css'
+// import './less/base.less'
+// import './scss/base.scss'
+// import '@babel/polyfill'
 
-console.log(moment().subtract(6, 'days').startOf('day').format('YYYY-MM-DD HH:mm:ss'))
-console.log(moment().subtract(6, 'days').calendar())
+// import Vue from 'vue' // runtime-only的vue包
+import Vue from 'vue/dist/vue.js' // 完整版的vuejs
+import VueRouter from 'vue-router'
+Vue.use(VueRouter)
+
+const homeComponent = {
+	template: `<p>Home页面</p>`
+}
+const errComponent = {
+	template: `<p>error页面</p>`
+}
+
+const router = new VueRouter({
+	mode: 'hash',
+	routes: [
+		{
+			path: '/home',
+			component: homeComponent
+		},
+		{
+			path: '/404',
+			component: errComponent
+		}
+	]
+})
+
+new Vue({
+	el: '#app',
+	data: {
+		msg: 'hello webpack'
+	},
+	router
+})
+
+
+
+
+
+
+
+
+
+
+
+
