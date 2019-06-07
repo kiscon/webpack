@@ -77,5 +77,11 @@ import('jquery').then(({default: $}) => {
 new webpack.IgnorePlugin(/\.\/locale/, /moment/)
 ```
 
+### DllPlugin和DllReferencePlugin
+主要思想在于：将一些不做修改的依赖文件，提前打包，这样我们开发代码发布的时候
+就不需要再对这部分代码进行打包，从而节省了打包时间。
+
+
+
 ### 参考配置
 https://www.jianshu.com/p/84e0a31024c5

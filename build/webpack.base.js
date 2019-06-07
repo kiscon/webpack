@@ -4,13 +4,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const multipageConfig = require('./multipage-config')
 
 let outputDir = process.env.outputDir || 'dist'
 
 module.exports = {
 	entry: {
 		main: './src/main.js',
-		other: './src/pages/other/other.js'
+		...multipageConfig.moreEntry
 	},
 	output: {
 		// path.resolve：解析当前相对路径的绝对路径
@@ -28,11 +29,7 @@ module.exports = {
 			},
 			hash: true
 		}),
-		new HtmlWebpackPlugin({
-			filename: 'other.html',
-			template: './src/pages/other/other.html',
-			chunks: ['other']
-		}),
+		...multipageConfig.moreHtml,
 		new CleanWebpackPlugin(),
 		new CopyWebpackPlugin([
 			{
@@ -53,7 +50,7 @@ module.exports = {
 		new webpack.IgnorePlugin(/\.\/locale/, /moment/),
 	],
 	module: {
-		noParse: /jquery|moment/,
+		noParse: /jquery/,
 		rules: [
 			// webpack读取loader时是从右到左的读取，会将css文件先交给最右侧的loader来处理
 			// loader的执行顺序是管道的方式链式调用
