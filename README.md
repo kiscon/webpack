@@ -85,3 +85,5 @@ new webpack.IgnorePlugin(/\.\/locale/, /moment/)
 
 ### 参考配置
 https://www.jianshu.com/p/84e0a31024c5
+
+git remote set-url origin git@github.com:kiscon/webpack.git

@@ -53,7 +53,7 @@ module.exports = {
 			manifest: path.resolve(__dirname, '../dist/manifest.json')
 		}),
 		new AddAssetHtmlPlugin({
-			filepath: path.resolve(__dirname, '../dist/vue_dll.js')
+			filepath: path.resolve(__dirname, '../dist/react_dll.js')
 		})
 	],
 	module: {
@@ -75,8 +75,8 @@ module.exports = {
 			},
 			{
 				test: /\.s(a|c)ss$/,
-				// use: ['style-loader', 'css-loader', 'sass-loader']
-				use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader']
+				// use: ['style-loader', 'css-loader', 'fast-sass-loader']
+				use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'fast-sass-loader']
 			},
 			{
 				test: /\.(jpg|jpeg|png|bmp|gif)$/,
