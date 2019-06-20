@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
+const HappyPack = require('happypack')
 const multipageConfig = require('./multipage-config')
 
 let outputDir = process.env.outputDir || 'dist'
@@ -12,7 +13,7 @@ let outputDir = process.env.outputDir || 'dist'
 module.exports = {
 	entry: {
 		main: './src/main.js',
-		...multipageConfig.moreEntry
+		// ...multipageConfig.moreEntry
 	},
 	output: {
 		// path.resolve：解析当前相对路径的绝对路径
@@ -30,7 +31,7 @@ module.exports = {
 			},
 			hash: true
 		}),
-		...multipageConfig.moreHtml,
+		// ...multipageConfig.moreHtml,
 		// new CleanWebpackPlugin(),
 		new CopyWebpackPlugin([
 			{
@@ -40,10 +41,10 @@ module.exports = {
 		]),
 		new webpack.BannerPlugin('webpaxk入门到进阶'),
 		// 将库自动加载到每个模块
-		new webpack.ProvidePlugin({
-			$: 'jquery',
-			jQuery: 'jquery'
-		}),
+		// new webpack.ProvidePlugin({
+		// 	$: 'jquery',
+		// 	jQuery: 'jquery'
+		// }),
 		new MiniCssExtractPlugin({
 			filename: '[name].css'
 		}),
@@ -53,8 +54,11 @@ module.exports = {
 			manifest: path.resolve(__dirname, '../dist/manifest.json')
 		}),
 		new AddAssetHtmlPlugin({
-			filepath: path.resolve(__dirname, '../dist/react_dll.js')
-		})
+			filepath: path.resolve(__dirname, '../dist/vue_dll.js')
+		}),
+		// new HappyPack({
+		// 	loaders: ['babel-loader']
+		// })
 	],
 	module: {
 		noParse: /jquery/,
@@ -96,7 +100,8 @@ module.exports = {
 			{
 				test: /\.js$/,
 				use: {
-					loader: 'babel-loader'
+					loader: 'babel-loader',
+					// loader: 'happypack/loader'
 				},
 				exclude: '/node_modules/',
 				include: path.resolve(__dirname, '../src')

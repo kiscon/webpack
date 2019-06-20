@@ -86,4 +86,23 @@ new webpack.IgnorePlugin(/\.\/locale/, /moment/)
 ### 参考配置
 https://www.jianshu.com/p/84e0a31024c5
 
+### happypack
+早期通过happypack实现多进程打包
+
+### 多进程
+- 多进程和多线程介绍
+线程是进程的一个执行流，是CPU调度和分派的基本单位，它是比进程更小的能独立运行的基本单位。
+**一个进程由几个线程组成**，线程与同属一个进程的其它的线程共享进程所拥有的全部资源。
+
+
+
+
+
+
+
+
+
+
+
+
 git remote set-url origin git@github.com:kiscon/webpack.git
