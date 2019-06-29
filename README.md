@@ -106,6 +106,11 @@ webpack-bundle-analyzer插件，可以进行打包后分析
 ctrl+shif+p
 输入coverage，重新加载网站，查看覆盖率
 
+### [Prefetching/Preloading](https://webpack.js.org/guides/code-splitting/#prefetchingpreloading-modules)
+- 想提高覆盖率，需要尽可能多的使用动态导入，也就是懒加载
+- 在懒加载时使用魔法注释：Prefetching，是指在首页资源加载完毕后，空闲时间时，
+将动态导入的资源加载进来，这样既可以提高首屏加载速度，也可以解决懒加载可能会影响用户体验问题。
+ 
 
 
 
