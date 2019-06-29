@@ -10,7 +10,7 @@
     "dev2": "webpack-dev-server --compress --hot --open --port 3000 --contentBase src",
     "dev": "webpack-dev-server --config ./build/webpack.dev.js",
     "build": "webpack --config ./build/webpack.prod.js",
-    "build:analyse": "webpack --profile --json > stats.json --config ./build/webpack.prod.js",
+    "build:analyse": "webpack --profile --json > stats.json --config ./build/webpack.analyse.js",
     "build:dev": "webpack --config ./build/webpack.dev.js",
     "build:vue": "webpack --config ./build/webpack.vue.js",
     "build:react": "webpack --config ./build/webpack.react.js",

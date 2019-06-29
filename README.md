@@ -102,6 +102,9 @@ https://webpack.github.io/analyse/
 
 webpack-bundle-analyzer插件，可以进行打包后分析
 
+### 覆盖率
+ctrl+shif+p
+输入coverage，重新加载网站，查看覆盖率
 
 
 

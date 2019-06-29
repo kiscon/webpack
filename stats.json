@@ -1,10 +1,12 @@
+Webpack Bundle Analyzer is started at http://127.0.0.1:8888
+Use Ctrl+C to close it
 {
   "errors": [],
   "warnings": [],
   "version": "4.31.0",
-  "hash": "b8ce96dafc935e748303",
-  "time": 1781,
-  "builtAt": 1561820287535,
+  "hash": "24a008a5709b53ebfc27",
+  "time": 879,
+  "builtAt": 1561822632853,
   "publicPath": "",
   "outputPath": "E:\\testdemo\\webpack\\dist",
   "assetsByChunkName": {
@@ -34,7 +36,7 @@
     },
     {
       "name": "main.js",
-      "size": 1324,
+      "size": 1344,
       "chunks": [
         0
       ],
@@ -89,7 +91,7 @@
       "files": [
         "main.js"
       ],
-      "hash": "7bafdf4b2e865048406d",
+      "hash": "45678594bc0f86c76ac7",
       "siblings": [],
       "parents": [],
       "children": [],
@@ -108,22 +110,22 @@
           "chunks": [
             0
           ],
-          "issuer": "E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\src\\main.js",
+          "issuer": "E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\src\\main.js",
           "issuerId": 3,
           "issuerName": "./src/main.js",
           "issuerPath": [
             {
               "id": 3,
-              "identifier": "E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\src\\main.js",
+              "identifier": "E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\src\\main.js",
               "name": "./src/main.js",
               "profile": {
-                "factory": 65,
-                "building": 1080
+                "factory": 35,
+                "building": 483
               }
             }
           ],
           "profile": {
-            "factory": 35,
+            "factory": 53,
             "building": 0,
             "dependencies": 0
           },
@@ -134,7 +136,7 @@
           "reasons": [
             {
               "moduleId": 3,
-              "moduleIdentifier": "E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\src\\main.js",
+              "moduleIdentifier": "E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\src\\main.js",
               "module": "./src/main.js",
               "moduleName": "./src/main.js",
               "type": "harmony side effect evaluation",
@@ -143,7 +145,7 @@
             },
             {
               "moduleId": 3,
-              "moduleIdentifier": "E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\src\\main.js",
+              "moduleIdentifier": "E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\src\\main.js",
               "module": "./src/main.js",
               "moduleName": "./src/main.js",
               "type": "harmony import specifier",
@@ -152,7 +154,7 @@
             },
             {
               "moduleId": 3,
-              "moduleIdentifier": "E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\src\\main.js",
+              "moduleIdentifier": "E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\src\\main.js",
               "module": "./src/main.js",
               "moduleName": "./src/main.js",
               "type": "harmony import specifier",
@@ -180,22 +182,22 @@
           "chunks": [
             0
           ],
-          "issuer": "E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\src\\main.js",
+          "issuer": "E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\src\\main.js",
           "issuerId": 3,
           "issuerName": "./src/main.js",
           "issuerPath": [
             {
               "id": 3,
-              "identifier": "E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\src\\main.js",
+              "identifier": "E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\src\\main.js",
               "name": "./src/main.js",
               "profile": {
-                "factory": 65,
-                "building": 1080
+                "factory": 35,
+                "building": 483
               }
             }
           ],
           "profile": {
-            "factory": 35,
+            "factory": 53,
             "building": 0,
             "dependencies": 0
           },
@@ -206,7 +208,7 @@
           "reasons": [
             {
               "moduleId": 3,
-              "moduleIdentifier": "E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\src\\main.js",
+              "moduleIdentifier": "E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\src\\main.js",
               "module": "./src/main.js",
               "moduleName": "./src/main.js",
               "type": "harmony side effect evaluation",
@@ -215,7 +217,7 @@
             },
             {
               "moduleId": 3,
-              "moduleIdentifier": "E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\src\\main.js",
+              "moduleIdentifier": "E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\src\\main.js",
               "module": "./src/main.js",
               "moduleName": "./src/main.js",
               "type": "harmony import specifier",
@@ -224,7 +226,7 @@
             },
             {
               "moduleId": 3,
-              "moduleIdentifier": "E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\src\\main.js",
+              "moduleIdentifier": "E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\src\\main.js",
               "module": "./src/main.js",
               "moduleName": "./src/main.js",
               "type": "harmony import specifier",
@@ -260,11 +262,11 @@
           "issuerPath": [
             {
               "id": 3,
-              "identifier": "E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\src\\main.js",
+              "identifier": "E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\src\\main.js",
               "name": "./src/main.js",
               "profile": {
-                "factory": 65,
-                "building": 1080
+                "factory": 35,
+                "building": 483
               }
             },
             {
@@ -272,14 +274,14 @@
               "identifier": "delegated 2 from dll-reference vue_dll",
               "name": "delegated ./node_modules/vue/dist/vue.js from dll-reference vue_dll",
               "profile": {
-                "factory": 35,
+                "factory": 53,
                 "building": 0,
                 "dependencies": 0
               }
             }
           ],
           "profile": {
-            "factory": 0,
+            "factory": 1,
             "building": 0
           },
           "failed": false,
@@ -313,7 +315,7 @@
         },
         {
           "id": 3,
-          "identifier": "E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\src\\main.js",
+          "identifier": "E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\src\\main.js",
           "name": "./src/main.js",
           "index": 0,
           "index2": 3,
@@ -330,8 +332,8 @@
           "issuerName": null,
           "issuerPath": null,
           "profile": {
-            "factory": 65,
-            "building": 1080
+            "factory": 35,
+            "building": 483
           },
           "failed": false,
           "errors": 0,
@@ -384,22 +386,22 @@
       "chunks": [
         0
       ],
-      "issuer": "E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\src\\main.js",
+      "issuer": "E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\src\\main.js",
       "issuerId": 3,
       "issuerName": "./src/main.js",
       "issuerPath": [
         {
           "id": 3,
-          "identifier": "E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\src\\main.js",
+          "identifier": "E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\src\\main.js",
           "name": "./src/main.js",
           "profile": {
-            "factory": 65,
-            "building": 1080
+            "factory": 35,
+            "building": 483
           }
         }
       ],
       "profile": {
-        "factory": 35,
+        "factory": 53,
         "building": 0,
         "dependencies": 0
       },
@@ -410,7 +412,7 @@
       "reasons": [
         {
           "moduleId": 3,
-          "moduleIdentifier": "E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\src\\main.js",
+          "moduleIdentifier": "E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\src\\main.js",
           "module": "./src/main.js",
           "moduleName": "./src/main.js",
           "type": "harmony side effect evaluation",
@@ -419,7 +421,7 @@
         },
         {
           "moduleId": 3,
-          "moduleIdentifier": "E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\src\\main.js",
+          "moduleIdentifier": "E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\src\\main.js",
           "module": "./src/main.js",
           "moduleName": "./src/main.js",
           "type": "harmony import specifier",
@@ -428,7 +430,7 @@
         },
         {
           "moduleId": 3,
-          "moduleIdentifier": "E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\src\\main.js",
+          "moduleIdentifier": "E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\src\\main.js",
           "module": "./src/main.js",
           "moduleName": "./src/main.js",
           "type": "harmony import specifier",
@@ -456,22 +458,22 @@
       "chunks": [
         0
       ],
-      "issuer": "E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\src\\main.js",
+      "issuer": "E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\src\\main.js",
       "issuerId": 3,
       "issuerName": "./src/main.js",
       "issuerPath": [
         {
           "id": 3,
-          "identifier": "E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\src\\main.js",
+          "identifier": "E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\src\\main.js",
           "name": "./src/main.js",
           "profile": {
-            "factory": 65,
-            "building": 1080
+            "factory": 35,
+            "building": 483
           }
         }
       ],
       "profile": {
-        "factory": 35,
+        "factory": 53,
         "building": 0,
         "dependencies": 0
       },
@@ -482,7 +484,7 @@
       "reasons": [
         {
           "moduleId": 3,
-          "moduleIdentifier": "E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\src\\main.js",
+          "moduleIdentifier": "E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\src\\main.js",
           "module": "./src/main.js",
           "moduleName": "./src/main.js",
           "type": "harmony side effect evaluation",
@@ -491,7 +493,7 @@
         },
         {
           "moduleId": 3,
-          "moduleIdentifier": "E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\src\\main.js",
+          "moduleIdentifier": "E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\src\\main.js",
           "module": "./src/main.js",
           "moduleName": "./src/main.js",
           "type": "harmony import specifier",
@@ -500,7 +502,7 @@
         },
         {
           "moduleId": 3,
-          "moduleIdentifier": "E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\src\\main.js",
+          "moduleIdentifier": "E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\src\\main.js",
           "module": "./src/main.js",
           "moduleName": "./src/main.js",
           "type": "harmony import specifier",
@@ -536,11 +538,11 @@
       "issuerPath": [
         {
           "id": 3,
-          "identifier": "E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\src\\main.js",
+          "identifier": "E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\src\\main.js",
           "name": "./src/main.js",
           "profile": {
-            "factory": 65,
-            "building": 1080
+            "factory": 35,
+            "building": 483
           }
         },
         {
@@ -548,14 +550,14 @@
           "identifier": "delegated 2 from dll-reference vue_dll",
           "name": "delegated ./node_modules/vue/dist/vue.js from dll-reference vue_dll",
           "profile": {
-            "factory": 35,
+            "factory": 53,
             "building": 0,
             "dependencies": 0
           }
         }
       ],
       "profile": {
-        "factory": 0,
+        "factory": 1,
         "building": 0
       },
       "failed": false,
@@ -589,7 +591,7 @@
     },
     {
       "id": 3,
-      "identifier": "E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\src\\main.js",
+      "identifier": "E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\node_modules\\babel-loader\\lib\\index.js!E:\\testdemo\\webpack\\src\\main.js",
       "name": "./src/main.js",
       "index": 0,
       "index2": 3,
@@ -606,8 +608,8 @@
       "issuerName": null,
       "issuerPath": null,
       "profile": {
-        "factory": 65,
-        "building": 1080
+        "factory": 35,
+        "building": 483
       },
       "failed": false,
       "errors": 0,
@@ -644,7 +646,7 @@
       "assets": [
         {
           "name": "index.html",
-          "size": 4043,
+          "size": 4063,
           "chunks": [
             0
           ],
@@ -696,7 +698,7 @@
           "modules": [
             {
               "id": 0,
-              "identifier": "E:\\testdemo\\webpack\\node_modules\\html-webpack-plugin\\lib\\loader.js!E:\\testdemo\\webpack\\node_modules\\html-withimg-loader\\index.js!E:\\testdemo\\webpack\\src\\index.html",
+              "identifier": "E:\\testdemo\\webpack\\node_modules\\html-webpack-plugin\\lib\\loader.js!E:\\testdemo\\webpack\\node_modules\\html-withimg-loader\\index.js!E:\\testdemo\\webpack\\node_modules\\html-withimg-loader\\index.js!E:\\testdemo\\webpack\\src\\index.html",
               "name": "./node_modules/html-webpack-plugin/lib/loader.js!./src/index.html",
               "index": 0,
               "index2": 0,
@@ -713,8 +715,8 @@
               "issuerName": null,
               "issuerPath": null,
               "profile": {
-                "factory": 28,
-                "building": 142
+                "factory": 69,
+                "building": 443
               },
               "failed": false,
               "errors": 0,
@@ -755,7 +757,7 @@
       "modules": [
         {
           "id": 0,
-          "identifier": "E:\\testdemo\\webpack\\node_modules\\html-webpack-plugin\\lib\\loader.js!E:\\testdemo\\webpack\\node_modules\\html-withimg-loader\\index.js!E:\\testdemo\\webpack\\src\\index.html",
+          "identifier": "E:\\testdemo\\webpack\\node_modules\\html-webpack-plugin\\lib\\loader.js!E:\\testdemo\\webpack\\node_modules\\html-withimg-loader\\index.js!E:\\testdemo\\webpack\\node_modules\\html-withimg-loader\\index.js!E:\\testdemo\\webpack\\src\\index.html",
           "name": "./node_modules/html-webpack-plugin/lib/loader.js!./src/index.html",
           "index": 0,
           "index2": 0,
@@ -772,8 +774,175 @@
           "issuerName": null,
           "issuerPath": null,
           "profile": {
-            "factory": 28,
-            "building": 142
+            "factory": 69,
+            "building": 443
+          },
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "assets": [],
+          "reasons": [
+            {
+              "moduleId": null,
+              "moduleIdentifier": null,
+              "module": null,
+              "moduleName": null,
+              "type": "single entry",
+              "userRequest": "E:\\testdemo\\webpack\\node_modules\\html-webpack-plugin\\lib\\loader.js!E:\\testdemo\\webpack\\src\\index.html"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "optimizationBailout": [
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 0,
+          "source": "module.exports = \"<!DOCTYPE html>\\r<html lang=\\\"en\\\">\\r<head>\\r  <meta charset=\\\"UTF-8\\\">\\r  <title>Webpack</title>\\r</head>\\r<body>\\r  <div id=\\\"app\\\">\\r    <div v-text=\\\"msg\\\"></div>\\r    <router-link to=\\\"/home\\\">首页</router-link>\\r    <router-link to=\\\"/404\\\">404</router-link>\\r    <router-view />\\r  </div>\\r</body>\\r</html>\""
+        }
+      ],
+      "filteredModules": 0,
+      "children": [],
+      "name": "html-webpack-plugin for \"index.html\""
+    },
+    {
+      "errors": [],
+      "warnings": [],
+      "publicPath": "",
+      "outputPath": "E:\\testdemo\\webpack\\dist",
+      "assetsByChunkName": {},
+      "assets": [
+        {
+          "name": "index.html",
+          "size": 4063,
+          "chunks": [
+            0
+          ],
+          "chunkNames": [],
+          "emitted": false
+        }
+      ],
+      "filteredAssets": 0,
+      "entrypoints": {
+        "undefined": {
+          "chunks": [
+            0
+          ],
+          "assets": [
+            "index.html"
+          ],
+          "children": {},
+          "childAssets": {}
+        }
+      },
+      "namedChunkGroups": {
+        "undefined": {
+          "chunks": [
+            0
+          ],
+          "assets": [
+            "index.html"
+          ],
+          "children": {},
+          "childAssets": {}
+        }
+      },
+      "chunks": [
+        {
+          "id": 0,
+          "rendered": true,
+          "initial": true,
+          "entry": true,
+          "size": 330,
+          "names": [],
+          "files": [
+            "index.html"
+          ],
+          "hash": "807f21d412b173c6694e",
+          "siblings": [],
+          "parents": [],
+          "children": [],
+          "childrenByOrder": {},
+          "modules": [
+            {
+              "id": 0,
+              "identifier": "E:\\testdemo\\webpack\\node_modules\\html-webpack-plugin\\lib\\loader.js!E:\\testdemo\\webpack\\node_modules\\html-withimg-loader\\index.js!E:\\testdemo\\webpack\\node_modules\\html-withimg-loader\\index.js!E:\\testdemo\\webpack\\src\\index.html",
+              "name": "./node_modules/html-webpack-plugin/lib/loader.js!./src/index.html",
+              "index": 0,
+              "index2": 0,
+              "size": 330,
+              "cacheable": true,
+              "built": true,
+              "optional": false,
+              "prefetched": false,
+              "chunks": [
+                0
+              ],
+              "issuer": null,
+              "issuerId": null,
+              "issuerName": null,
+              "issuerPath": null,
+              "profile": {
+                "factory": 75,
+                "building": 434
+              },
+              "failed": false,
+              "errors": 0,
+              "warnings": 0,
+              "assets": [],
+              "reasons": [
+                {
+                  "moduleId": null,
+                  "moduleIdentifier": null,
+                  "module": null,
+                  "moduleName": null,
+                  "type": "single entry",
+                  "userRequest": "E:\\testdemo\\webpack\\node_modules\\html-webpack-plugin\\lib\\loader.js!E:\\testdemo\\webpack\\src\\index.html"
+                }
+              ],
+              "usedExports": true,
+              "providedExports": null,
+              "optimizationBailout": [
+                "ModuleConcatenation bailout: Module is not an ECMAScript module"
+              ],
+              "depth": 0,
+              "source": "module.exports = \"<!DOCTYPE html>\\r<html lang=\\\"en\\\">\\r<head>\\r  <meta charset=\\\"UTF-8\\\">\\r  <title>Webpack</title>\\r</head>\\r<body>\\r  <div id=\\\"app\\\">\\r    <div v-text=\\\"msg\\\"></div>\\r    <router-link to=\\\"/home\\\">首页</router-link>\\r    <router-link to=\\\"/404\\\">404</router-link>\\r    <router-view />\\r  </div>\\r</body>\\r</html>\""
+            }
+          ],
+          "filteredModules": 0,
+          "origins": [
+            {
+              "module": "",
+              "moduleIdentifier": "",
+              "moduleName": "",
+              "loc": "",
+              "request": "E:\\testdemo\\webpack\\node_modules\\html-webpack-plugin\\lib\\loader.js!E:\\testdemo\\webpack\\src\\index.html",
+              "reasons": []
+            }
+          ]
+        }
+      ],
+      "modules": [
+        {
+          "id": 0,
+          "identifier": "E:\\testdemo\\webpack\\node_modules\\html-webpack-plugin\\lib\\loader.js!E:\\testdemo\\webpack\\node_modules\\html-withimg-loader\\index.js!E:\\testdemo\\webpack\\node_modules\\html-withimg-loader\\index.js!E:\\testdemo\\webpack\\src\\index.html",
+          "name": "./node_modules/html-webpack-plugin/lib/loader.js!./src/index.html",
+          "index": 0,
+          "index2": 0,
+          "size": 330,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            0
+          ],
+          "issuer": null,
+          "issuerId": null,
+          "issuerName": null,
+          "issuerPath": null,
+          "profile": {
+            "factory": 75,
+            "building": 434
           },
           "failed": false,
           "errors": 0,
