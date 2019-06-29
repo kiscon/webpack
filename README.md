@@ -94,7 +94,13 @@ https://www.jianshu.com/p/84e0a31024c5
 线程是进程的一个执行流，是CPU调度和分派的基本单位，它是比进程更小的能独立运行的基本单位。
 **一个进程由几个线程组成**，线程与同属一个进程的其它的线程共享进程所拥有的全部资源。
 
+### Bundle Analysis打包分析
+首先配置打包指令：
+"build:analyse": "webpack --profile --json > stats.json --config ./build/webpack.prod.js",
+在如下链接选择stats.json进行分析
+https://webpack.github.io/analyse/
 
+webpack-bundle-analyzer插件，可以进行打包后分析
 
 
 

@@ -7,7 +7,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
 const HappyPack = require('happypack')
 const multipageConfig = require('./multipage-config')
-
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 let outputDir = process.env.outputDir || 'dist'
 
 module.exports = {
@@ -59,6 +59,7 @@ module.exports = {
 		// new HappyPack({
 		// 	loaders: ['babel-loader']
 		// })
+		// new BundleAnalyzerPlugin()
 	],
 	module: {
 		noParse: /jquery/,
