@@ -21,7 +21,12 @@ class Compiler {
 		traverse(ast, {
 			CallExpression(p) {
 				if (p.node.callee.name === 'require') {
+					// 修改require
 					p.node.callee.name = '__webpack_require__'
+					// 修改路径，并避免windows出现反斜杠：\
+					let oldVal = p.node.arguments[0].value
+					oldVal = `./${path.join('src', oldVal)}`.replace(/\\+/g, '/')
+					p.node.arguments[0].value = oldVal
 				}
 			}
 		})
