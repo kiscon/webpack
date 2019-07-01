@@ -111,12 +111,4 @@ ctrl+shif+p
 - 在懒加载时使用魔法注释：Prefetching，是指在首页资源加载完毕后，空闲时间时，
 将动态导入的资源加载进来，这样既可以提高首屏加载速度，也可以解决懒加载可能会影响用户体验问题。
  
-
-
-
-
-
-
-
-
 git remote set-url origin git@github.com:kiscon/webpack.git
