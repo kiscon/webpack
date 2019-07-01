@@ -1,3 +1,5 @@
-const test = require('./test')
+const test = require('./test.js')
+const test2 = require('./msg.js')
 console.log(test.msg)
-console.log('主入口')
+console.log(test2.msg)
+// console.log('主入口')
