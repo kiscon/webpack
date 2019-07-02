@@ -84,3 +84,11 @@ emitFile() {
 		fs.writeFileSync(outputPath, reuslt)
 	}
 ```
+
+### loader
+
+加载顺序：pre前置，post后置，遵循：pre > inline > normal > post
+
+```javascript
+{test: /\.js$/, use: './loaders/loader.js', enforce: 'pre'}
+```

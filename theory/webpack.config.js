@@ -6,5 +6,10 @@ module.exports = {
 		path: path.join(__dirname, 'dist'),
 		filename: 'bundle.js'
 	},
+	module: {
+		rules: [
+			{test: /\.js$/, use: './loaders/loader.js', enforce: 'pre'}
+		]
+	},
 	mode: 'development'
 }

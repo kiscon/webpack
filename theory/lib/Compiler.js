@@ -52,15 +52,15 @@ class Compiler {
 		})
 	}
 	emitFile() {
+		// 使用模板进行拼接字符串，生成最终的结果代码
 		let template = this.getSource(path.join(__dirname, '../template/output.ejs'))
 		let reuslt = ejs.render(template, {
 			entry: this.entry,
 			modules: this.modules
 		})
-		// console.log(reuslt)
+		// 获取输出目录
 		let output = this.config.output
 		let outputPath = path.join(output.path, output.filename)
-		console.log(outputPath)
 		fs.writeFileSync(outputPath, reuslt)
 	}
 	start() {
