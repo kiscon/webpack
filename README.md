@@ -1,4 +1,10 @@
-npx webpack
+### webpack的四大核心概念
+- entry（入口）
+- output（输出）
+- loader（用于对模块的源代码进行转换）
+- plugins（插件）
+  
+指令：npx webpack
 
 ### html-webpack-plugin
 1. 根据模板在express项目根目录下生成html文件（类似于devServer生成内存中的bundle.js）
