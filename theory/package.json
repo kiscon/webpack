@@ -19,6 +19,7 @@
     "ejs": "^2.6.2"
   },
   "devDependencies": {
+    "cheerio": "^1.0.0-rc.3",
     "loader-utils": "^1.2.3",
     "webpack": "^4.35.2",
     "webpack-cli": "^3.3.5"

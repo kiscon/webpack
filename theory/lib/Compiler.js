@@ -101,7 +101,7 @@ class Compiler {
 				}
 			}
 		}
-		console.log(source)
+		// console.log(source)
 		return source
 	}
 }
