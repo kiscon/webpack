@@ -92,3 +92,19 @@ emitFile() {
 ```javascript
 {test: /\.js$/, use: './loaders/loader.js', enforce: 'pre'}
 ```
+
+### [webpack插件的组成](https://webpack.docschina.org/contribute/writing-a-plugin)
+
+- 一个JavaScript命名函数
+- 在插件函数的prototype上定义一个apply方法
+- 指定一个绑定到webpack自身的事件钩子
+- 处理webpack内部实例的特定数据
+- 功能完成后调用webpack提供的回调
+
+### plugin生命周期钩子函数
+- https://webpack.js.org/api/compiler-hooks/
+
+
+  
+
+
