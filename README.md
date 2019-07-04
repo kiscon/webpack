@@ -116,5 +116,22 @@ ctrl+shif+p
 - 想提高覆盖率，需要尽可能多的使用动态导入，也就是懒加载
 - 在懒加载时使用魔法注释：Prefetching，是指在首页资源加载完毕后，空闲时间时，
 将动态导入的资源加载进来，这样既可以提高首屏加载速度，也可以解决懒加载可能会影响用户体验问题。
- 
+
+### webpack性能优化
+1. 自带优化
+2. css优化
+- 提取到单独文件
+- 自动添加前缀
+- 压缩 
+3. js优化
+- 代码分离：手动配置多入口，抽取公用代码、懒加载、SplitChunksPlugin参数详解
+- noParse
+- lgnorePlugin
+- DllPlugin：将固定库抽取成动态链接库节省资源
+4. 多进程打包
+- happypack
+5. 浏览器缓存
+6. 打包分析
+7. Prefetching
+
 git remote set-url origin git@github.com:kiscon/webpack.git
