@@ -2,7 +2,7 @@ const webpack = require('webpack')
 const merge = require('webpack-merge')
 // css压缩
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-// js压缩
+// js压缩：用terser-webpack-plugin替换掉uglifyjs-webpack-plugin解决uglifyjs不支持es6语法问题
 const TerserJSPlugin = require('terser-webpack-plugin')
 const baseConfig = require('./webpack.base')
 
@@ -12,10 +12,26 @@ module.exports = merge(baseConfig, {
 	plugins: [
 		new webpack.DefinePlugin({
 			IS_DEV: 'false'
-		})
+		}),
 	],
-	optimization: {
-		minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})], // 代码压缩
+	optimization: {  
+		minimizer: [  // 代码压缩
+			new TerserJSPlugin({
+				test: /\.js(\?.*)?$/i,
+        terserOptions: {
+          // 生产环境自动删除console
+          compress: {
+            // warnings: false, // 若打包错误，则注释这行
+            drop_debugger: true,
+            drop_console: true,
+            pure_funcs: ['console.log']
+          }
+        },
+        sourceMap: false,
+        parallel: true
+      }),
+			new OptimizeCSSAssetsPlugin({})
+		],
 		splitChunks: { // 抽取公用代码
 			chunks: 'all', // 默认 async 表示只会对异步加载的模块进行代码切割，可选值还有all | initial
 			minSize: 30000, // 最少大于30kB才拆分
