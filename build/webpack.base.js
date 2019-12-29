@@ -7,7 +7,9 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
 const HappyPack = require('happypack')
 let outputDir = process.env.outputDir || 'dist'
-
+function resolve (dir) {
+	return path.resolve(__dirname, dir)
+}
 module.exports = {
 	entry: {
 		main: './src/main.js',
@@ -42,10 +44,10 @@ module.exports = {
 		// 不打包moment的语言包
 		new webpack.IgnorePlugin(/\.\/locale/, /moment/),
 		new webpack.DllReferencePlugin({
-			manifest: path.resolve(__dirname, '../dist/manifest.json')
+			manifest: resolve('../dist/manifest.json')
 		}),
 		new AddAssetHtmlPlugin({
-			filepath: path.resolve(__dirname, '../dist/vue_dll.js')
+			filepath: resolve('../dist/vue_dll.js')
 		}),
 		// new HappyPack({
 		// 	loaders: ['babel-loader']
@@ -95,7 +97,7 @@ module.exports = {
 					// loader: 'happypack/loader'
 				},
 				exclude: '/node_modules/',
-				include: path.resolve(__dirname, '../src')
+				include: resolve('../src')
 			},
 			// html中img标签的图片资源处理
 			{
