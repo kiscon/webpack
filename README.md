@@ -118,20 +118,35 @@ ctrl+shif+p
 将动态导入的资源加载进来，这样既可以提高首屏加载速度，也可以解决懒加载可能会影响用户体验问题。
 
 ### webpack性能优化
-1. 自带优化
-2. css优化
-- 提取到单独文件
-- 自动添加前缀
-- 压缩 
-3. js优化
-- 代码分离：手动配置多入口，抽取公用代码、懒加载、SplitChunksPlugin参数详解
-- noParse
-- lgnorePlugin
-- DllPlugin：将固定库抽取成动态链接库节省资源
-4. 多进程打包
-- happypack
-5. 浏览器缓存
-6. 打包分析
-7. Prefetching
+  自带优化
+  html优化
+    压缩：html-webpack-plugin
+  css优化
+    提取到单独文件：mini-css-extract-plugin
+    自动添加前缀
+    压缩：optimize-css-assets-webpack-plugin
+  js优化
+    代码分离：手动配置多入口，抽取公用代码、懒加载、SplitChunksPlugin参数详解
+    noParse：当使用的第三方库过大，并且不包含import require define 的调用。可以使用noParse让库不被loaders 解析
+    lgnorePlugin：不打包moment的语言包，new webpack.IgnorePlugin(/\.\/locale/, /moment/)
+    DllPlugin：将固定库抽取成动态链接库节省资源
+    依赖库分离：optimization.splitChunks
+    压缩：terser-webpack-plugin
+  多进程打包
+    happypack
+  合并压缩图片
+    base64转换：file-loader 和url-loader 两个loaders供选择
+    压缩图片：image-webpack-loader
+  浏览器缓存
+  打包分析
+    依赖分析：webpack-bundle-analyzer
+  删除冗余代码
+    Tree shaking
+    // .babelrc
+    {
+      "presets": [["env", { "modules": false }]]
+    }
+  Prefetching
+  微任务、宏任务
 
 git remote set-url origin git@github.com:kiscon/webpack.git
