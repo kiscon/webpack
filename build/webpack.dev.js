@@ -2,6 +2,14 @@ const webpack = require('webpack')
 const merge = require('webpack-merge')
 const baseConfig = require('./webpack.base')
 
+const PROXY_ENV = process.env.PROXY_ENV || 'dev'
+const targets = {
+  dev: 'http://127.0.0.1:3000',
+  uat: 'http://127.0.0.1:3001',
+  prod: 'http://127.0.0.1:3002'
+}
+console.log(`代理到${PROXY_ENV}环境：${targets[PROXY_ENV]}`)
+
 module.exports = merge(baseConfig, {
 	mode: 'development', // 开发模式配置，默认production
 	devtool: 'cheap-module-eval-source-map',
@@ -11,7 +19,13 @@ module.exports = merge(baseConfig, {
 		hot: true, // 开启热更新
 		// port: 5000,
 		compress: false, // 是否开启压缩
-		// contentBase: './src'
+    // contentBase: './src',
+    proxy: {
+      '/api': {
+        target: targets[PROXY_ENV],
+        changeOrigin: true
+      }
+    },
 	},
 	plugins: [
 		// DefinePlugin会解析定义的环境变量表达式，当成JS执行
