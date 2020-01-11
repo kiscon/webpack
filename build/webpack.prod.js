@@ -1,9 +1,11 @@
+const path = require('path')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 // css压缩
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 // js压缩：用terser-webpack-plugin替换掉uglifyjs-webpack-plugin解决uglifyjs不支持es6语法问题
 const TerserJSPlugin = require('terser-webpack-plugin')
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
 const baseConfig = require('./webpack.base')
 
 module.exports = merge(baseConfig, {
@@ -12,10 +14,22 @@ module.exports = merge(baseConfig, {
 	plugins: [
 		new webpack.DefinePlugin({
 			IS_DEV: 'false'
-		}),
+    }),
+    // 使用DllReferencePlugin指定manifest.json文件的位置即可
+		new webpack.DllReferencePlugin({
+			manifest: require('../dll/rplib-manifest.json')
+    }),
+    // 使用add-asset-html-webpack-plugin插件自动添加script标签到HTML中
+    new AddAssetHtmlPlugin({
+      filepath: path.resolve(__dirname, '../dll/rplib.dll.*.js'),
+      publicPath: '/static/js',
+      outputPath: '../dist/static/js',
+      includeSourcemap: false
+    })
 	],
 	optimization: {  
-		minimizer: [  // 代码压缩
+		minimizer: [
+      // 代码压缩
 			new TerserJSPlugin({
 				test: /\.js(\?.*)?$/i,
         terserOptions: {
