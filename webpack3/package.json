@@ -24,7 +24,7 @@
     "formidable": "^1.2.1",
     "mint-ui": "^2.2.12",
     "moment": "^2.13.0",
-    "mongoose": "^4.13.5",
+    "mongoose": "^5.8.7",
     "morgan": "^1.9.0",
     "node-rsa": "^0.4.2",
     "request": "^2.83.0",
