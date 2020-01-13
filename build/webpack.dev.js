@@ -8,7 +8,7 @@ const targets = {
   uat: 'http://127.0.0.1:3001',
   prod: 'http://127.0.0.1:3002'
 }
-console.log(`代理到${PROXY_ENV}环境：${targets[PROXY_ENV]}`)
+// console.log(`代理到${PROXY_ENV}环境：${targets[PROXY_ENV]}`)
 
 module.exports = merge(baseConfig, {
 	mode: 'development', // 开发模式配置，默认production
@@ -17,8 +17,9 @@ module.exports = merge(baseConfig, {
 	devServer: {
 		open: false, // 是否自动开启
 		hot: true, // 开启热更新
-		// port: 5000,
-		compress: false, // 是否开启压缩
+    compress: false, // 是否开启压缩
+    host: process.env.HOST || 'localhost',
+    port: process.env.PORT || 8088,
     // contentBase: './src',
     proxy: {
       '/api': {
