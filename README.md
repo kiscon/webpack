@@ -118,6 +118,7 @@ ctrl+shif+p
 将动态导入的资源加载进来，这样既可以提高首屏加载速度，也可以解决懒加载可能会影响用户体验问题。
 
 ### webpack性能优化
+```
   自带优化
   html优化
     压缩：html-webpack-plugin
@@ -148,5 +149,6 @@ ctrl+shif+p
     }
   Prefetching
   微任务、宏任务
+  ```
 
 git remote set-url origin git@github.com:kiscon/webpack.git
