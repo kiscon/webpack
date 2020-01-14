@@ -55,7 +55,6 @@ module.exports = {
   },
 	plugins: [
 		// new CleanWebpackPlugin(),
-    // new webpack.BannerPlugin('webpack'),
     new CopyWebpackPlugin([
 			{
         from: path.resolve(__dirname, '../static'),
@@ -116,10 +115,9 @@ module.exports = {
       },
 			{
 				test: /\.js$/,
-				use: {
-					loader: 'babel-loader',
-					// loader: 'happypack/loader'
-				},
+        use: [
+          isProduction ? 'happypack/loader?id=happyBabel' : 'babel-loader'
+        ],
 				exclude: '/node_modules/',
 				include: path.resolve('../src')
 			},

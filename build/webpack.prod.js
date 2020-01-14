@@ -2,12 +2,13 @@ const path = require('path')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin') // css压缩
-const TerserJSPlugin = require('terser-webpack-plugin') // js压缩：用terser-webpack-plugin替换掉uglifyjs-webpack-plugin解决uglifyjs不支持es6语法问题
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const TerserJSPlugin = require('terser-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const baseConfig = require('./webpack.base')
 const HappyPack = require('happypack')
+const packageConfig = require('../package.json')
 const outputDir = process.env.outputDir || 'dist'
 
 // 设置打包的文件路径
@@ -19,6 +20,11 @@ const assetsPath = _path => {
 module.exports = merge(baseConfig, {
 	mode: 'production', // 开发模式配置，默认production
   devtool: 'cheap-module-source-map',
+  // 解决webpack4打包时出现：Entrypoint undefined = index.html
+  // https://www.webpackjs.com/configuration/stats/#stats
+  stats: {
+    children: false
+  },
   output: {
     // path.resolve：解析当前相对路径的绝对路径
     // path.join(path1，path2...) 将路径片段使用特定的分隔符（window：\）连接起来形成路径，并规范化生成的路径
@@ -58,15 +64,25 @@ module.exports = merge(baseConfig, {
       outputPath: '../dist/static/js',
       includeSourcemap: false
     }),
+    // happypack可以将任务分解给多个子进程，最后将结果发给主进程，js是单线程模型，通过这种多线程的方式提高性能
+    // https://github.com/amireh/happypack
     new HappyPack({
-      id: 'babel', // 上面loader?后面指定的id
-      loaders: ['babel-loader?cacheDirectory=true'], // cacheDirectory: true // 利用缓存，提高性能
-      threadPool: HappyPack.ThreadPool({ size: 4 })
+      id: 'happyBabel', // loader?后面指定的id
+      loaders: [{
+        loader: 'babel-loader',
+        options: {
+          cacheDirectory: true // 利用缓存，提高性能
+        }
+      }],
+      threadPool: HappyPack.ThreadPool({ size: 4 }), // 代表共享进程池，（查看电脑cpu核数，require('os').cpus().length）
+      verbose: true, // 是否允许 HappyPack 输出日志，默认是 true
     }),
+    // 用于给打包的js文件加上版权注释信息
+    new webpack.BannerPlugin(`${packageConfig.name}_${packageConfig.version}_${packageConfig.description}`),
 	],
 	optimization: {  
 		minimizer: [
-      // 代码压缩
+      // js压缩：用terser-webpack-plugin替换掉uglifyjs-webpack-plugin解决uglifyjs不支持es6语法问题
 			new TerserJSPlugin({
 				test: /\.js(\?.*)?$/i,
         terserOptions: {
@@ -81,6 +97,7 @@ module.exports = merge(baseConfig, {
         sourceMap: false,
         parallel: true
       }),
+       // css压缩
 			new OptimizeCSSAssetsPlugin({})
 		],
 		splitChunks: { // 抽取公用代码
