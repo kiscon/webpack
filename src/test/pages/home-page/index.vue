@@ -29,17 +29,22 @@
     </ul>
   </div>
 </template>
-
 <script>
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  inject: ['reload'], // 注入App.vue中的reload方法
+  methods: {
+    addSet() {
+      setTimeout(() => {
+        this.reload()
+      }, 1000)
+    }
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h3 {
   margin: 40px 0 0;
