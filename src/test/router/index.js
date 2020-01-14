@@ -6,7 +6,7 @@ const getRoutes = (context, ignore) => {
   const routes = []
   context.keys().forEach(key => {
     if (key !== ignore) {
-      let data = context(key).default
+      const data = context(key).default
       if (data && data.length) {
         routes.push(...data)
       }

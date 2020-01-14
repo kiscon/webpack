@@ -1,12 +1,13 @@
 const path = require('path')
-const webpack = require('webpack')
 // const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
-// const HappyPack = require('happypack')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const outputDir = process.env.outputDir || 'dist'
 const isProduction = process.env.NODE_ENV === 'production'
+
+function resolve (dir) {
+  return path.join(__dirname, '..', dir)
+}
 
 const baseCssLoader = () => {
   return [
@@ -16,38 +17,45 @@ const baseCssLoader = () => {
     'postcss-loader'
   ]
 }
+
 // 设置打包的文件路径
 const assetsPath = _path => {
   let assetsSubDirectory = process.env.assetsPath || 'static'
   return path.posix.join(assetsSubDirectory, _path)
 }
 
+// 配置eslint规则，// https://vue-loader.vuejs.org/zh/guide/linting.html#eslint
+const setEslintRule = () => ({
+  test: /\.(js|vue)$/,
+  loader: 'eslint-loader',
+  enforce: 'pre', // 编译前检查
+  include: [resolve('src')], // 指定检查的目录
+  exclude: /node_modules/, // 不检测的文件
+  options: {
+    formatter: require('eslint-friendly-formatter'), // 指定错误报告的格式规范
+    emitWarning: true
+  }
+})
+
 module.exports = {
 	entry: {
 		main: './src/test/main.js',
 	},
 	output: {
-    // path.resolve：解析当前相对路径的绝对路径
-    // path.join(path1，path2...) 将路径片段使用特定的分隔符（window：\）连接起来形成路径，并规范化生成的路径
-		path: path.resolve(__dirname, '..', outputDir),
-    filename: assetsPath('js/[name].[chunkhash].js'),
-    chunkFilename: assetsPath('js/[name].[chunkhash].js')
+    path: path.resolve(__dirname, '../dist'),
+    filename: '[name].js',
+    publicPath: '/'
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.runtime.esm.js',
-      '@': path.join(__dirname, '..', 'src')
+      '@': resolve('src'),
     }
   },
 	plugins: [
 		// new CleanWebpackPlugin(),
     // new webpack.BannerPlugin('webpack'),
-
-    // 提取到单独文件：mini-css-extract-plugin
-		new MiniCssExtractPlugin({
-      filename: assetsPath('css/[name].[chunkhash].css'),
-    }),
     new CopyWebpackPlugin([
 			{
         from: path.resolve(__dirname, '../static'),
@@ -55,11 +63,6 @@ module.exports = {
         ignore: ['.*']
 			}
     ]),
-
-		// new HappyPack({
-		// 	loaders: ['babel-loader']
-    // }),
-
     // 将你定义过的其它规则复制并应用到.vue 文件里相应语言的块。https://vue-loader.vuejs.org/zh/guide/#vue-cli
     new VueLoaderPlugin()
 	],
@@ -124,7 +127,8 @@ module.exports = {
 			{
 				test: /\.(htm|html)$/i,
 				use: 'html-withimg-loader'
-			}
+      },
+      ...(isProduction ? [] : [setEslintRule()]), // 打包时不启用eslint
 		]
 	}
 }

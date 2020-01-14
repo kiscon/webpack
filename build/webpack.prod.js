@@ -5,13 +5,27 @@ const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin') // css压缩
 const TerserJSPlugin = require('terser-webpack-plugin') // js压缩：用terser-webpack-plugin替换掉uglifyjs-webpack-plugin解决uglifyjs不支持es6语法问题
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const baseConfig = require('./webpack.base')
 const HappyPack = require('happypack')
-const happyThreadPool = HappyPack.ThreadPool({ size: 4 })
+const outputDir = process.env.outputDir || 'dist'
+
+// 设置打包的文件路径
+const assetsPath = _path => {
+  let assetsSubDirectory = process.env.assetsPath || 'static'
+  return path.posix.join(assetsSubDirectory, _path)
+}
 
 module.exports = merge(baseConfig, {
 	mode: 'production', // 开发模式配置，默认production
-	devtool: 'cheap-module-source-map',
+  devtool: 'cheap-module-source-map',
+  output: {
+    // path.resolve：解析当前相对路径的绝对路径
+    // path.join(path1，path2...) 将路径片段使用特定的分隔符（window：\）连接起来形成路径，并规范化生成的路径
+		path: path.resolve(__dirname, '..', outputDir),
+    filename: assetsPath('js/[name].[chunkhash].js'),
+    chunkFilename: assetsPath('js/[name].[chunkhash].js')
+  },
 	plugins: [
 		new webpack.DefinePlugin({
 			IS_DEV: 'false'
@@ -28,7 +42,11 @@ module.exports = merge(baseConfig, {
         removeAttributeQuotes: true, // 尽可能删除属性周围的引号
 				collapseWhitespace: true // 折叠有助于文档树中文本节点的空白
 			}
-		}),
+    }),
+    // 提取到单独文件：mini-css-extract-plugin
+		new MiniCssExtractPlugin({
+      filename: assetsPath('css/[name].[chunkhash].css'),
+    }),
     // 使用DllReferencePlugin指定manifest.json文件的位置即可
 		new webpack.DllReferencePlugin({
 			manifest: require('../dll/rplib-manifest.json')
@@ -42,8 +60,8 @@ module.exports = merge(baseConfig, {
     }),
     new HappyPack({
       id: 'babel', // 上面loader?后面指定的id
-      loaders: ['babel-loader?cacheDirectory=true'],
-      threadPool: happyThreadPool
+      loaders: ['babel-loader?cacheDirectory=true'], // cacheDirectory: true // 利用缓存，提高性能
+      threadPool: HappyPack.ThreadPool({ size: 4 })
     }),
 	],
 	optimization: {  
@@ -74,7 +92,7 @@ module.exports = merge(baseConfig, {
 			automaticNameDelimiter: '-', // 默认的连接符 ~
 			name: true, // 拆分的chunk名，设为true表示根据模块名和cacheGroups的key来自动生成，使用上面连接符连接
 			cacheGroups: { // 缓存组配置
-				vendors: { // 自定义缓存组名
+				public: { // 自定义缓存组名
 					test: /[\\/]node_modules[\\/]/,
 					priority: -10 // 权重-10，决定了哪个组优先匹配，例如node_modules下有个模块要拆分，同时满足vendors和default组，
 					// 此时就会分到vendors组，因为-10>-20
