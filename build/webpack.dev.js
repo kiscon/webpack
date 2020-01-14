@@ -1,6 +1,7 @@
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const baseConfig = require('./webpack.base')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const PROXY_ENV = process.env.PROXY_ENV || 'dev'
 const targets = {
@@ -32,6 +33,12 @@ module.exports = merge(baseConfig, {
 		// DefinePlugin会解析定义的环境变量表达式，当成JS执行
 		new webpack.DefinePlugin({
 			IS_DEV: 'true'
+    }),
+    // https://github.com/ampedandwired/html-webpack-plugin
+		new HtmlWebpackPlugin({
+			filename: 'index.html',
+      template: './src/test/public/index.html',
+      inject: true
 		})
 	]
 })

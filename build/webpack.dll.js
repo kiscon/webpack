@@ -18,6 +18,8 @@ module.exports = {
 		new webpack.DllPlugin({
 			name: '[name]',
 			path: path.resolve(__dirname, '../dll/[name]-manifest.json'),
-		})
+    }),
+    // 不打包moment的语言包
+    new webpack.IgnorePlugin(/\.\/locale/, /moment/),
 	]
 }

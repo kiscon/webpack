@@ -1,12 +1,13 @@
 const path = require('path')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
-// css压缩
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-// js压缩：用terser-webpack-plugin替换掉uglifyjs-webpack-plugin解决uglifyjs不支持es6语法问题
-const TerserJSPlugin = require('terser-webpack-plugin')
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin') // css压缩
+const TerserJSPlugin = require('terser-webpack-plugin') // js压缩：用terser-webpack-plugin替换掉uglifyjs-webpack-plugin解决uglifyjs不支持es6语法问题
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const baseConfig = require('./webpack.base')
+const HappyPack = require('happypack')
+const happyThreadPool = HappyPack.ThreadPool({ size: 4 })
 
 module.exports = merge(baseConfig, {
 	mode: 'production', // 开发模式配置，默认production
@@ -15,6 +16,19 @@ module.exports = merge(baseConfig, {
 		new webpack.DefinePlugin({
 			IS_DEV: 'false'
     }),
+    // https://github.com/ampedandwired/html-webpack-plugin
+		new HtmlWebpackPlugin({
+			filename: 'index.html',
+			template: './src/test/public/index.html',
+      favicon: './src/test/public/favicon.ico',
+      inject: true,
+			// 压缩 去掉所有空格， https://github.com/DanielRuf/html-minifier-terser
+			minify: {
+        removeComments: true, // 删除HTML注释
+        removeAttributeQuotes: true, // 尽可能删除属性周围的引号
+				collapseWhitespace: true // 折叠有助于文档树中文本节点的空白
+			}
+		}),
     // 使用DllReferencePlugin指定manifest.json文件的位置即可
 		new webpack.DllReferencePlugin({
 			manifest: require('../dll/rplib-manifest.json')
@@ -25,7 +39,12 @@ module.exports = merge(baseConfig, {
       publicPath: '/static/js',
       outputPath: '../dist/static/js',
       includeSourcemap: false
-    })
+    }),
+    new HappyPack({
+      id: 'babel', // 上面loader?后面指定的id
+      loaders: ['babel-loader?cacheDirectory=true'],
+      threadPool: happyThreadPool
+    }),
 	],
 	optimization: {  
 		minimizer: [
