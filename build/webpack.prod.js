@@ -8,7 +8,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const baseConfig = require('./webpack.base')
 const HappyPack = require('happypack')
-const packageConfig = require('../package.json')
+const pkg = require('../package.json')
 const outputDir = process.env.outputDir || 'dist'
 
 // 设置打包的文件路径
@@ -78,7 +78,7 @@ module.exports = merge(baseConfig, {
       verbose: true, // 是否允许 HappyPack 输出日志，默认是 true
     }),
     // 用于给打包的js文件加上版权注释信息
-    new webpack.BannerPlugin(`${packageConfig.name}_${packageConfig.version}_${packageConfig.description}`),
+    new webpack.BannerPlugin(`${pkg.name}_${pkg.version}_${pkg.description}`),
 	],
 	optimization: {  
 		minimizer: [

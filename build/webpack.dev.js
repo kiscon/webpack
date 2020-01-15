@@ -1,7 +1,10 @@
 const webpack = require('webpack')
 const merge = require('webpack-merge')
-const baseConfig = require('./webpack.base')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+const portfinder = require('portfinder')
+const baseConfig = require('./webpack.base')
+const pkg = require('../package.json')
 
 const PROXY_ENV = process.env.PROXY_ENV || 'dev'
 const targets = {
@@ -11,7 +14,7 @@ const targets = {
 }
 // console.log(`代理到${PROXY_ENV}环境：${targets[PROXY_ENV]}`)
 
-module.exports = merge(baseConfig, {
+const devWebpackConfig = merge(baseConfig, {
   mode: 'development', // 开发模式配置，默认production
   stats: 'errors-only', // errors-only：只在发生错误时输出【该配置可处理webpack服务启动时，去掉多余的打印信息】
 	devtool: 'cheap-module-eval-source-map',
@@ -42,4 +45,35 @@ module.exports = merge(baseConfig, {
       inject: true
 		})
 	]
+})
+
+module.exports = new Promise((resolve, reject) => {
+  // portfinder：获取当前可用的port (一旦端口被占用，报错，再次运行时会打开：8080+1,依次类推...8080+n)
+  portfinder.basePort = process.env.PORT || devWebpackConfig.devServer.port
+  portfinder.getPort((err, port) => {
+    if (err) {
+      reject(err)
+    } else {
+      process.env.PORT = port
+      // 添加端口到devServer配置
+      devWebpackConfig.devServer.port = port
+      // https://github.com/geowarin/friendly-errors-webpack-plugin
+      devWebpackConfig.plugins.push(new FriendlyErrorsPlugin({
+        compilationSuccessInfo: {
+          messages: [`Your application is running here: http://${devWebpackConfig.devServer.host}:${port}`],
+        },
+        onErrors: (severity, errors) => {
+          if (severity !== 'error') return
+          const error = errors[0]
+          const filename = error.file && error.file.split('!').pop()
+          alert(JSON.stringify({
+            title: pkg.name,
+            message: severity + ': ' + error.name,
+            subtitle: filename || ''
+          }))
+        }
+      }))
+      resolve(devWebpackConfig)
+    }
+  })
 })
