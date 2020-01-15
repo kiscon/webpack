@@ -20,10 +20,10 @@ const assetsPath = _path => {
 module.exports = merge(baseConfig, {
 	mode: 'production', // 开发模式配置，默认production
   devtool: 'cheap-module-source-map',
-  // 解决webpack4打包时出现：Entrypoint undefined = index.html
   // https://www.webpackjs.com/configuration/stats/#stats
   stats: {
-    children: false
+    children: false, // 默认true，是否添加children信息（设置为false，解决webpack4打包时出现：Entrypoint undefined = index.html）
+    modules: false, // 默认true，是否添加构建模块信息
   },
   output: {
     // path.resolve：解析当前相对路径的绝对路径

@@ -5,7 +5,10 @@ const path = require('path')
 const webpack = require('webpack')
 
 module.exports = {
-	mode: 'production',  // 开发模式配置，默认production || development
+  mode: 'production',  // 开发模式配置，默认production || development
+  stats: {
+    modules: false, // 默认true，是否添加构建模块信息
+  },
 	entry: {
 		rplib: ['vue/dist/vue.runtime.esm.js', 'vue-router', 'lodash']
 	},
