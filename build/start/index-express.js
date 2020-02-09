@@ -3,26 +3,18 @@ const devConf = require('../dev.server')
 const { spawn } = require('child_process')
 
 // 开启服务
-const startService = () => {
-  const Koa = require('koa')
-  const Router = require('koa-router')
-  const Static = require('koa-static')
-  const proxy = require('koa-server-http-proxy')  // https://github.com/eugeneCN/koa-server-http-proxy
-  const app = new Koa()
-  const router = new Router()
-
+const startService = (express, proxy) => {
+  const app = express()
   // 导入代理设置
   Object.keys(devConf.devServer.proxy).forEach(key => {
     app.use(proxy(key, devConf.devServer.proxy[key]))
   })
   
-  app.use(Static(path.join(__dirname, '..', '..', 'dist')))
+  app.use('/', express.static(path.join(__dirname, '..', '..', 'dist')))
 
-  router.get('*', async (ctx, next) => {
-    ctx.redirect('/')
+  app.get('*', (req, res) => {
+    res.redirect('/')
   })
-  
-  app.use(router.routes()).use(router.allowedMethods())
 
   app.listen(4002, () => {
     console.log('Server start at: http://localhost:4002/')
@@ -30,8 +22,10 @@ const startService = () => {
 }
 
 try {
-  const koa = require('koa')
-  startService(koa)
+  const express = require('express')
+  // https://github.com/chimurai/http-proxy-middleware
+  const proxy = require('http-proxy-middleware')
+  startService(express, proxy)
 } catch {
   /**
    * 开启子进程安装依赖包
@@ -49,6 +43,6 @@ try {
   })
   _yarn.on('close', code => {
     console.log(`子进程退出，退出码: ${code}`)
-    startService()
+    startService(require('express'), require('http-proxy-middleware'))
   })
 }

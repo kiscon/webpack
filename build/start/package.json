@@ -6,7 +6,9 @@
   "author": "kiscon",
   "license": "ISC",
   "devDependencies": {
-    "express": "^4.17.1",
-    "http-proxy-middleware": "^0.20.0"
+    "koa": "^2.11.0",
+    "koa-router": "^8.0.7",
+    "koa-server-http-proxy": "^0.1.0",
+    "koa-static": "^5.0.0"
   }
 }
