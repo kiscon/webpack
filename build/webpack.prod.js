@@ -10,6 +10,7 @@ const baseConfig = require('./webpack.base')
 const HappyPack = require('happypack')
 const pkg = require('../package.json')
 const outputDir = process.env.outputDir || 'dist'
+const PROXY_ENV = process.env.PROXY_ENV
 
 // 设置打包的文件路径
 const assetsPath = _path => {
@@ -58,12 +59,13 @@ module.exports = merge(baseConfig, {
 			manifest: require('../dll/rplib-manifest.json')
     }),
     // 使用add-asset-html-webpack-plugin插件自动添加script标签到HTML中
-    new AddAssetHtmlPlugin({
+    // PROXY_ENV !== 'smp' 判断，防止smp打包时候报错
+    PROXY_ENV !== 'smp' ? new AddAssetHtmlPlugin({
       filepath: path.resolve(__dirname, '../dll/rplib.dll.*.js'),
       publicPath: '/static/js',
       outputPath: '../dist/static/js',
       includeSourcemap: false
-    }),
+    }) : function () {},
     // happypack可以将任务分解给多个子进程，最后将结果发给主进程，js是单线程模型，通过这种多线程的方式提高性能
     // https://github.com/amireh/happypack
     new HappyPack({
