@@ -132,7 +132,46 @@ new HappyPack({
 
 ### 10.loader原理
 
- loader 模块和资源的转换器，它本质是一个函数，接受源文件以字符串的形式读入，对其进行语法分析及转换，然后将结果交由下一环节进行处理。
+ loader 是模块和资源的转换器，它本质是一个函数，接受源文件以字符串的形式读入，对其进行语法分析及转换，然后将结果交由下一环节进行处理。
 
-loade执行顺序是从右往左执行的。至于为什么是从右到左执行而不是从左到右？因为webpack是用compose式编程，而从左到右则是pipe式编程。
+loader执行顺序是从右往左执行的。至于为什么是从右到左执行而不是从左到右？因为webpack是用compose式编程，而从左到右则是pipe式编程。
+
+### 11.外部扩展externals配置
+
+配置externals[ɪkˈstɜːrnlz]选项提供了「从输出的 bundle 中排除依赖」的方法。
+https://webpack.docschina.org/configuration/externals/
+
+vue.config.js
+
+```javascript
+const externals = ['vue', 'vuex', 'vue-router', 'vant']
+const isProduction = process.env.NODE_ENV === 'production'
+module.exports = {
+	configureWebpack: {
+    externals: isProduction ? externals : []
+  },
+}
+```
+
+webpack.config.js
+
+```javascript
+module.exports = {
+  ...
+  output: {
+    ...
+  },
+  externals : {
+    vue: 'vue',
+    vuex: 'vuex'
+  }
+  ...
+}
+```
+
+index.html
+
+```html
+<script src="https://cdn.bootcss.com/vue/2.6.10/vue.runtime.min.js"></script>
+```
 
