@@ -39,7 +39,8 @@ const setEslintRule = () => ({
 
 module.exports = {
 	entry: {
-		main: './src/test/main.js',
+    // main: './src/test/main.js',
+		main: `./src/${process.env.PROJECT_PATH}/main.js`,
 	},
 	output: {
     path: path.resolve(__dirname, '../dist'),

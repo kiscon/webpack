@@ -8,9 +8,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const baseConfig = require('./webpack.base')
 const HappyPack = require('happypack')
-const pkg = require('../package.json')
+// const pkg = require('../package.json')
 const outputDir = process.env.outputDir || 'dist'
-const PROXY_ENV = process.env.PROXY_ENV
+const PROJECT_PATH = process.env.PROJECT_PATH
 
 // 设置打包的文件路径
 const assetsPath = _path => {
@@ -40,8 +40,8 @@ module.exports = merge(baseConfig, {
     // https://github.com/ampedandwired/html-webpack-plugin
 		new HtmlWebpackPlugin({
 			filename: 'index.html',
-			template: './src/test/public/index.html',
-      favicon: './src/test/public/favicon.ico',
+			template:  `./src/${PROJECT_PATH}/public/index.html`,
+      favicon: `./src/${PROJECT_PATH}/public/index.html`,
       inject: true,
 			// 压缩 去掉所有空格， https://github.com/DanielRuf/html-minifier-terser
 			minify: {
@@ -59,8 +59,8 @@ module.exports = merge(baseConfig, {
 			manifest: require('../dll/rplib-manifest.json')
     }),
     // 使用add-asset-html-webpack-plugin插件自动添加script标签到HTML中
-    // PROXY_ENV !== 'smp' 判断，防止smp打包时候报错
-    PROXY_ENV !== 'smp' ? new AddAssetHtmlPlugin({
+    // NODE_ENV !== 'smp' 判断，防止smp打包时候报错
+    process.env.NODE_ENV !== 'smp' ? new AddAssetHtmlPlugin({
       filepath: path.resolve(__dirname, '../dll/rplib.dll.*.js'),
       publicPath: '/static/js',
       outputPath: '../dist/static/js',
@@ -79,8 +79,8 @@ module.exports = merge(baseConfig, {
       threadPool: HappyPack.ThreadPool({ size: 4 }), // 代表共享进程池，（查看电脑cpu核数，require('os').cpus().length）
       verbose: true, // 是否允许 HappyPack 输出日志，默认是 true
     }),
-    // 用于给打包的js文件加上版权注释信息
-    new webpack.BannerPlugin(`${pkg.name}_${pkg.version}_${pkg.description}`),
+    // 用于给打包的js文件加上版权注释信息，加上会多出.LICENSE和.map文件
+    // new webpack.BannerPlugin(`${pkg.name}_${pkg.version}_${pkg.description}`),
 	],
 	optimization: {  
 		minimizer: [

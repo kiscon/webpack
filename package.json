@@ -6,15 +6,16 @@
   "author": "kiscon",
   "license": "ISC",
   "scripts": {
-    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.js",
+    "dev": "yarn path webpack-dev-server --inline --progress --config build/webpack.dev.js",
     "dev:uat": "PROXY_ENV=uat yarn dev",
-    "build": "webpack --config build/webpack.prod.js",
+    "build": "yarn path webpack --config build/webpack.prod.js",
     "dll": "rm -rf dll/ && webpack --config build/webpack.dll.js",
     "build:analyse": "webpack --profile --json > stats.json --config build/webpack.analyse.js",
-    "build:smp": "PROXY_ENV=smp webpack --config build/webpack.smp.js",
+    "build:smp": "NODE_ENV=smp yarn path webpack --config build/webpack.smp.js",
     "lint": "eslint --ext .js,.vue src --cache",
     "watch": "webpack --watch",
-    "start": "node build/start/index.js"
+    "start": "node build/start/index.js",
+    "path": "PROJECT_PATH=test"
   },
   "dependencies": {
     "moment": "^2.24.0",
