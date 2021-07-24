@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "yarn path webpack-dev-server --inline --progress --config build/webpack.dev.js",
     "dev:uat": "cross-env PROXY_ENV=uat yarn dev",
-    "build": "yarn path webpack --config build/webpack.prod.js",
+    "build": "yarn path node --max_old_space_size=3072 build/build.js",
     "dll": "rm -rf dll/ && webpack --config build/webpack.dll.js",
     "build:analyse": "webpack --profile --json > stats.json --config build/webpack.analyse.js",
     "build:smp": "NODE_ENV=smp yarn path webpack --config build/webpack.smp.js",
