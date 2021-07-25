@@ -1,9 +1,9 @@
 const webpack = require('webpack')
 const path = require('path')
-const { existsSync } = require('fs')
+const fs = require('fs')
 const { exec } = require('child_process')
 
-if (!existsSync('dll')) {
+if (!fs.existsSync('dll')) {
   exec('webpack --config build/webpack.dll.js', {}, function (err, stdout, stderr) {
     if (err) {
       return console.error(err)
