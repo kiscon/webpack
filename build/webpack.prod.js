@@ -9,13 +9,11 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const baseConfig = require('./webpack.base')
 const HappyPack = require('happypack')
 // const pkg = require('../package.json')
-const outputDir = process.env.outputDir || 'dist'
-const PROJECT_PATH = process.env.PROJECT_PATH
+const ENV = require('./env')
 
 // 设置打包的文件路径
 const assetsPath = _path => {
-  let assetsSubDirectory = process.env.assetsPath || 'static'
-  return path.posix.join(assetsSubDirectory, _path)
+  return path.join(ENV.assetsPath, _path)
 }
 
 module.exports = merge(baseConfig, {
@@ -29,7 +27,7 @@ module.exports = merge(baseConfig, {
   output: {
     // path.resolve：解析当前相对路径的绝对路径
     // path.join(path1，path2...) 将路径片段使用特定的分隔符（window：\）连接起来形成路径，并规范化生成的路径
-		path: path.resolve(__dirname, '..', outputDir),
+		path: path.resolve(__dirname, '..', ENV.outputDir),
     filename: assetsPath('js/[name].[chunkhash].js'),
     chunkFilename: assetsPath('js/[name].[chunkhash].js')
   },
@@ -40,8 +38,8 @@ module.exports = merge(baseConfig, {
     // https://github.com/ampedandwired/html-webpack-plugin
 		new HtmlWebpackPlugin({
 			filename: 'index.html',
-			template:  `./src/${PROJECT_PATH}/public/index.html`,
-      favicon: `./src/${PROJECT_PATH}/public/index.html`,
+			template:  `./src/${ENV.projectPath}/public/index.html`,
+      favicon: `./src/${ENV.projectPath}/public/index.html`,
       inject: true,
 			// 压缩 去掉所有空格， https://github.com/DanielRuf/html-minifier-terser
 			minify: {

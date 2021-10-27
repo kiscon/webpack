@@ -1,6 +1,6 @@
 {
   "name": "webpack-basic",
-  "version": "0.0.1",
+  "version": "2.0.0",
   "description": "webpack应用",
   "main": "index.js",
   "author": "kiscon",
@@ -15,8 +15,8 @@
     "smp": "cross-env NODE_ENV=smp yarn path webpack --config build/webpack.smp.js",
     "lint": "eslint --ext .js,.vue src --cache",
     "watch": "webpack --watch",
-    "start": "node build/start/index.js",
-    "path": "cross-env PROJECT_PATH=test"
+    "start": "node start/koa.js",
+    "path": "cross-env PROJECT_PATH=todo1"
   },
   "dependencies": {
     "moment": "^2.24.0",
@@ -60,6 +60,7 @@
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "portfinder": "^1.0.25",
     "postcss-loader": "^3.0.0",
+    "sass": "^1.43.4",
     "sass-loader": "^8.0.2",
     "speed-measure-webpack-plugin": "^1.3.1",
     "style-loader": "^1.1.2",

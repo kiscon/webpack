@@ -3,7 +3,7 @@ const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const isProduction = process.env.NODE_ENV === 'production'
+const ENV = require('./env')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -12,7 +12,7 @@ function resolve (dir) {
 const baseCssLoader = () => {
   return [
     // https://vue-loader.vuejs.org/guide/extract-css.html#webpack-4
-    isProduction ? MiniCssExtractPlugin.loader : 'vue-style-loader',
+    ENV.isProd ? MiniCssExtractPlugin.loader : 'vue-style-loader',
     'css-loader',
     'postcss-loader'
   ]
@@ -20,8 +20,7 @@ const baseCssLoader = () => {
 
 // 设置打包的文件路径
 const assetsPath = _path => {
-  let assetsSubDirectory = process.env.assetsPath || 'static'
-  return path.posix.join(assetsSubDirectory, _path)
+  return path.posix.join(ENV.assetsPath, _path)
 }
 
 // 配置eslint规则，// https://vue-loader.vuejs.org/zh/guide/linting.html#eslint
@@ -40,7 +39,7 @@ const setEslintRule = () => ({
 module.exports = {
 	entry: {
     // main: './src/test/main.js',
-		main: `./src/${process.env.PROJECT_PATH}/main.js`,
+		main: `./src/${ENV.projectPath}/main.js`,
 	},
 	output: {
     path: path.resolve(__dirname, '../dist'),
@@ -117,7 +116,7 @@ module.exports = {
 			{
 				test: /\.js$/,
         use: [
-          isProduction ? 'happypack/loader?id=happyBabel' : 'babel-loader'
+          ENV.isProd ? 'happypack/loader?id=happyBabel' : 'babel-loader'
         ],
 				exclude: '/node_modules/',
 				include: path.resolve('../src')
@@ -127,7 +126,7 @@ module.exports = {
 				test: /\.(htm|html)$/i,
 				use: 'html-withimg-loader'
       },
-      ...(isProduction ? [] : [setEslintRule()]), // 打包时不启用eslint
+      ...(ENV.isProd ? [] : [setEslintRule()]), // 打包时不启用eslint
 		]
 	}
 }

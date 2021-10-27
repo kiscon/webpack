@@ -1,5 +1,5 @@
 // 首页
-const homePage = () => import(/* webpackChunkName: "xsHomePage" */ '@/test/pages/home-page/index.vue')
+const homePage = () => import(/* webpackChunkName: "xsHomePage" */ '../pages/home-page/index.vue')
 
 export default [
   {

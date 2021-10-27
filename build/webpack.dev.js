@@ -6,6 +6,7 @@ const portfinder = require('portfinder')
 const baseConfig = require('./webpack.base')
 const devServer = require('./dev.server')
 const pkg = require('../package.json')
+const ENV = require('./env')
 
 const devWebpackConfig = merge(baseConfig, devServer, {
   mode: 'development', // 开发模式配置，默认production
@@ -20,7 +21,7 @@ const devWebpackConfig = merge(baseConfig, devServer, {
     // https://github.com/ampedandwired/html-webpack-plugin
 		new HtmlWebpackPlugin({
 			filename: 'index.html',
-      template: './src/test/public/index.html',
+      template: `./src/${ENV.projectPath}/public/index.html`,
       inject: true
 		})
 	]
@@ -45,7 +46,7 @@ module.exports = new Promise((resolve, reject) => {
           if (severity !== 'error') return
           const error = errors[0]
           const filename = error.file && error.file.split('!').pop()
-          alert(JSON.stringify({
+          console.log(JSON.stringify({
             title: pkg.name,
             message: severity + ': ' + error.name,
             subtitle: filename || ''
