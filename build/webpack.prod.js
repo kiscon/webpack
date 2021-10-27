@@ -39,7 +39,7 @@ module.exports = merge(baseConfig, {
 		new HtmlWebpackPlugin({
 			filename: 'index.html',
 			template:  `./src/${ENV.projectPath}/public/index.html`,
-      favicon: `./src/${ENV.projectPath}/public/index.html`,
+      favicon: `./src/${ENV.projectPath}/public/favicon.ico`,
       inject: true,
 			// 压缩 去掉所有空格， https://github.com/DanielRuf/html-minifier-terser
 			minify: {
