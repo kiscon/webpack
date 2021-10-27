@@ -89,9 +89,6 @@ new webpack.IgnorePlugin(/\.\/locale/, /moment/)
 - 使用DllReferencePlugin指定manifest.json文件的位置即可
 - 使用add-asset-html-webpack-plugin插件自动添加script标签到HTML中
 
-### 参考配置
-https://www.jianshu.com/p/84e0a31024c5
-
 ### happypack
 早期通过happypack实现多进程打包
 

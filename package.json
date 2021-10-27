@@ -1,6 +1,6 @@
 {
   "name": "webpack-basic",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "webpack应用",
   "main": "index.js",
   "author": "kiscon",
