@@ -15,9 +15,11 @@ module.exports = {
     host: process.env.HOST || 'localhost',
     port: process.env.PORT || 8088,
     // contentBase: './src',
-    overlay: {
-      warnings: false,
-      errors: true,
+    client: {
+      overlay: {
+        errors: true,
+        warnings: false,
+      }
     },
     proxy: {
       '/api': {

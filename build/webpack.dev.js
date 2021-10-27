@@ -1,5 +1,5 @@
 const webpack = require('webpack')
-const merge = require('webpack-merge')
+const { merge } = require('webpack-merge')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
@@ -11,7 +11,7 @@ const ENV = require('./env')
 const devWebpackConfig = merge(baseConfig, devServer, {
   mode: 'development', // 开发模式配置，默认production
   stats: 'errors-only', // errors-only：只在发生错误时输出【该配置可处理webpack服务启动时，去掉多余的打印信息】
-	devtool: 'cheap-module-eval-source-map',
+	devtool: 'eval-cheap-module-source-map',
 	// watch: true, // 开启监视模式，此时webpack指令进行打包会监视文件变化自动打包
 	plugins: [
 		// DefinePlugin会解析定义的环境变量表达式，当成JS执行
@@ -38,6 +38,7 @@ module.exports = new Promise((resolve, reject) => {
       // 添加端口到devServer配置
       devWebpackConfig.devServer.port = port
       // https://github.com/geowarin/friendly-errors-webpack-plugin
+      // friendly-errors-webpack-plugin@1.7.0" has incorrect peer dependency "webpack@^2.0.0 || ^3.0.0 || ^4.0.0"
       devWebpackConfig.plugins.push(new FriendlyErrorsPlugin({
         compilationSuccessInfo: {
           messages: [`Your application is running here: http://${devWebpackConfig.devServer.host}:${port}`],

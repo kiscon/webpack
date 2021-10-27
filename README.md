@@ -77,17 +77,15 @@ import('jquery').then(({default: $}) => {
 ```
 动态导入最大的好处是实现了懒加载，可以提高SPA应用程序的首屏加载速度。
 
-### lgnorePlugin插件
-使用lgnorePlugin插件来忽略掉moment模块的locale目录
-```javascript
-new webpack.IgnorePlugin(/\.\/locale/, /moment/)
-```
 
 ### DllPlugin和DllReferencePlugin
 - 主要思想在于：将一些不做修改的依赖文件，提前打包，这样我们开发代码发布的时候
 就不需要再对这部分代码进行打包，从而节省了打包时间。
 - 使用DllReferencePlugin指定manifest.json文件的位置即可
 - 使用add-asset-html-webpack-plugin插件自动添加script标签到HTML中
+
+### 参考配置
+https://www.jianshu.com/p/84e0a31024c5
 
 ### happypack
 早期通过happypack实现多进程打包
@@ -126,7 +124,6 @@ ctrl+shif+p
   js优化
     代码分离：手动配置多入口，抽取公用代码、懒加载、SplitChunksPlugin参数详解
     noParse：当使用的第三方库过大，并且不包含import require define 的调用。可以使用noParse让库不被loaders 解析
-    lgnorePlugin：不打包moment的语言包，new webpack.IgnorePlugin(/\.\/locale/, /moment/)
     DllPlugin：将固定库抽取成动态链接库节省资源
     依赖库分离：optimization.splitChunks
     压缩：terser-webpack-plugin

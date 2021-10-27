@@ -22,9 +22,9 @@ module.exports = {
   ],
   plugins: ['import'],
   rules: {
-    'camelcase': 0,
+    camelcase: 0,
     'comma-dangle': [2, 'only-multiline'],
-    'indent': 0,
+    indent: 0,
     'no-extend-native': 2,
     'no-multiple-empty-lines': 0,
     'no-return-assign': 0,

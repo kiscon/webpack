@@ -9,6 +9,9 @@ export default [
   {
     path: '/home-page/index',
     component: homePage,
-    meta: { title: '首页', keepAlive: true }
+    meta: {
+      title: '首页',
+      keepAlive: true
+    }
   }
 ]

@@ -1,8 +1,8 @@
 const path = require('path')
 // const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const { VueLoaderPlugin } = require('vue-loader')
 const ENV = require('./env')
 
 function resolve (dir) {
@@ -38,7 +38,6 @@ const setEslintRule = () => ({
 
 module.exports = {
 	entry: {
-    // main: './src/test/main.js',
 		main: `./src/${ENV.projectPath}/main.js`,
 	},
 	output: {
@@ -55,13 +54,16 @@ module.exports = {
   },
 	plugins: [
 		// new CleanWebpackPlugin(),
-    new CopyWebpackPlugin([
-			{
+    // https://www.npmjs.com/package/copy-webpack-plugin
+    new CopyWebpackPlugin({
+      patterns: [{
         from: path.resolve(__dirname, '../static'),
         to: 'static',
-        ignore: ['.*']
-			}
-    ]),
+        globOptions: {
+          ignore: ['.*']
+        }
+      }]
+    }),
     // 将你定义过的其它规则复制并应用到.vue 文件里相应语言的块。https://vue-loader.vuejs.org/zh/guide/#vue-cli
     new VueLoaderPlugin()
 	],

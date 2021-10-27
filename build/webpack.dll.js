@@ -1,6 +1,6 @@
-/**
-* 配置打包dll
-***/
+/*
+ * 配置打包dll
+ */
 const path = require('path')
 const webpack = require('webpack')
 
@@ -10,7 +10,7 @@ module.exports = {
     modules: false, // 默认true，是否添加构建模块信息
   },
 	entry: {
-		rplib: ['vue/dist/vue.runtime.esm.js', 'vue-router', 'lodash']
+		xlib: ['vue/dist/vue.runtime.esm.js', 'vue-router', 'lodash']
 	},
 	output: {
 		path: path.resolve(__dirname, '../dll'),
@@ -21,8 +21,6 @@ module.exports = {
 		new webpack.DllPlugin({
 			name: '[name]',
 			path: path.resolve(__dirname, '../dll/[name]-manifest.json'),
-    }),
-    // 不打包moment的语言包
-    new webpack.IgnorePlugin(/\.\/locale/, /moment/),
+    })
 	]
 }
