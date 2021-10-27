@@ -13,7 +13,7 @@ if (!fs.existsSync('dll')) {
       build()
     }
     if (stderr) {
-      console.log(data.toString())
+      console.log(stderr.toString())
     }
   })
 } else {

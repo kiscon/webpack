@@ -1,8 +1,7 @@
 {
   "name": "webpack-basic",
-  "version": "2.0.3",
-  "description": "webpack应用",
-  "main": "index.js",
+  "version": "2.0.4",
+  "description": "webpack4+应用",
   "author": "kiscon",
   "license": "ISC",
   "scripts": {

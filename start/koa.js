@@ -1,6 +1,6 @@
 const path = require('path')
 const devConf = require('../build/dev.server')
-const { spawn } = require('child_process')
+const { exec } = require('child_process')
 
 // 开启服务
 const startService = () => {
@@ -29,28 +29,17 @@ const startService = () => {
   })
 }
 
-try {
-  const koa = require('koa')
-  startService(koa)
-} catch {
-  /**
-   * 开启子进程安装依赖包
-   * http://nodejs.cn/api/child_process.html
-   * 使用npm的时候spawn('npm', ['install'], {})
-   * **/
-  const _yarn = spawn('yarn', {
-    cwd: './start'
-  })
-  // stdout 获取标准输出
-  _yarn.stdout.on('data', data => {
-    console.log(`stdout: ${data}`)
-  })
-  // stderr 获取标准错误输出
-  _yarn.stderr.on('data', data => {
-    console.error(`stderr: ${data}`)
-  })
-  _yarn.on('close', code => {
-    console.log(`子进程退出，退出码: ${code}`)
+exec('yarn', {
+  cwd: __dirname
+}, (err, stdout, stderr) => {
+  if (err) {
+    return console.error(err)
+  }
+  if (stdout) {
+    console.log('\x1B[32m%s\x1b[0m', stdout.toString())
     startService()
-  })
-}
+  }
+  if (stderr) {
+    console.log(`stderr:${stderr}`)
+  }
+})

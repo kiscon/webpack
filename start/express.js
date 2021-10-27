@@ -33,7 +33,7 @@ try {
    * 使用npm的时候spawn('npm', ['install'], {})
    * **/
   const _yarn = spawn('yarn', {
-    cwd: './start'
+    cwd: __dirname
   })
   // stdout 获取标准输出
   _yarn.stdout.on('data', data => {
