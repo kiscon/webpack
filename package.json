@@ -1,6 +1,6 @@
 {
   "name": "webpack-basic",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "webpack5+应用",
   "author": "kiscon",
   "license": "ISC",
@@ -11,10 +11,10 @@
     "build:sz": "node --max_old_space_size=3072 build/build.js",
     "dll": "rm -rf dll/ && webpack --config build/webpack.dll.js",
     "analyse": "webpack --profile --json > stats.json --config build/webpack.analyse.js",
-    "smp": "cross-env NODE_ENV=smp yarn path webpack --config build/webpack.smp.js",
+    "smp": "cross-env NODE_ENV=smp webpack --config build/webpack.smp.js",
     "lint": "eslint --ext .js,.vue src --cache",
     "watch": "webpack --watch",
-    "start": "node build/start/index.js",
+    "start": "node start",
     "path": "cross-env PROJECT_PATH=todo1"
   },
   "dependencies": {
