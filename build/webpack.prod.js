@@ -18,7 +18,7 @@ const assetsPath = _path => {
 
 module.exports = merge(baseConfig, {
 	mode: 'production', // 开发模式配置，默认production
-  devtool: 'eval-cheap-module-source-map',
+  devtool: 'eval-cheap-source-map',
   // https://www.webpackjs.com/configuration/stats/#stats
   stats: {
     children: false, // 默认true，是否添加children信息（设置为false，解决webpack4打包时出现：Entrypoint undefined = index.html）
