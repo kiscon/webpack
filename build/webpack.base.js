@@ -1,5 +1,5 @@
 const path = require('path')
-// const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
@@ -49,11 +49,11 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.runtime.esm.js',
-      '@': resolve('src'),
+      '@': resolve('src')
     }
   },
 	plugins: [
-		// new CleanWebpackPlugin(),
+		new CleanWebpackPlugin(),
     // https://www.npmjs.com/package/copy-webpack-plugin
     new CopyWebpackPlugin({
       patterns: [{
