@@ -18,7 +18,7 @@
     "path": "cross-env PROJECT_PATH=todo1"
   },
   "dependencies": {
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "vue": "^2.6.11",
     "vue-router": "^3.1.4"
   },
